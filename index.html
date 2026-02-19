@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sound Legacy — Media Partnership Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+  body {
+    background: #0a0a0a;
+    color: #e8e8e8;
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── Slide base ─── */
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Background layer */
+  .slide-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .slide-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(10,10,10,0.4) 0%,
+      rgba(10,10,10,0.15) 40%,
+      rgba(10,10,10,0.5) 70%,
+      rgba(10,10,10,0.92) 100%
+    );
+  }
+
+  .slide-inner {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 980px;
+    height: 100%;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── Video Hero Slide ─── */
+  .video-hero {
+    scroll-snap-align: start;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .video-hero-bg iframe,
+  .video-hero-bg #ytplayer {
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.78vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .video-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 1;
+  }
+  .video-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 700px;
+    padding: 48px;
+  }
+  .video-hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .video-hero-content p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: rgba(232,232,232,0.15);
+    letter-spacing: 1.5px;
+    z-index: 10;
+    animation: float 2.5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(5px); }
+  }
+
+  /* ─── Logos ─── */
+  .logos {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    opacity: 0.65;
+  }
+  .logos img { height: 34px; opacity: 0.85; }
+  .logos img.logo-sl { filter: invert(1); height: 30px; }
+  .logos img.logo-prric { height: 42px; }
+  .logo-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(232,232,232,0.12);
+  }
+
+  /* ─── Flynn video box ─── */
+  .flynn-video-box {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    right: 80px;
+    bottom: 80px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #111;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+  }
+  .flynn-video-box iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: none;
+    object-fit: cover;
+  }
+  .flynn-video-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.7);
+    z-index: 1;
+  }
+  .flynn-video-box.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ─── Flynn date header ─── */
+  .flynn-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #fff;
+    margin-bottom: 6px;
+    opacity: 0; transform: translateY(4px);
+    transition: all 0.35s ease 0.05s;
+  }
+  .flynn-date.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── Flynn side arrows ─── */
+  .flynn-side-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(232,232,232,0.15);
+    background: rgba(232,232,232,0.04);
+    color: rgba(232,232,232,0.5);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .flynn-side-arrow:hover {
+    border-color: rgba(232,232,232,0.5);
+    color: #fff;
+    background: rgba(232,232,232,0.12);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .flynn-side-arrow.disabled { opacity: 0; pointer-events: none; }
+  .flynn-side-right {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+    border-color: rgba(232,232,232,0.25);
+    color: rgba(232,232,232,0.7);
+    background: rgba(232,232,232,0.06);
+  }
+  .flynn-timeline-bar {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    right: 48px;
+    z-index: 15;
+  }
+  .flynn-side-left { left: 24px; opacity: 0.4; }
+  .flynn-side-right { right: 24px; }
+
+  /* ─── CT side arrows (reusable for any click-through) ─── */
+  .ct-side-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    border-radius: 50%;
+    border: 1px solid rgba(232,232,232,0.15);
+    background: rgba(232,232,232,0.04);
+    color: rgba(232,232,232,0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ct-side-arrow:hover {
+    border-color: rgba(232,232,232,0.5);
+    color: #fff;
+    background: rgba(232,232,232,0.12);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .ct-side-arrow.disabled { opacity: 0; pointer-events: none; }
+  .ct-side-arrow.ct-left {
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    opacity: 0.35;
+  }
+  .ct-side-arrow.ct-right {
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+    border-color: rgba(232,232,232,0.25);
+    color: rgba(232,232,232,0.7);
+    background: rgba(232,232,232,0.06);
+    animation: ct-pulse 2s ease-in-out 3;
+  }
+  .ct-side-arrow.ct-right.tapped { animation: none; }
+  @keyframes ct-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232,232,232,0); }
+    50% { box-shadow: 0 0 0 8px rgba(232,232,232,0.06); }
+  }
+
+  /* ─── Click-through Slide ─── */
+  .ct-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: auto;
+  }
+  .ct-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(232,232,232,0.45);
+  }
+  .ct-counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(232,232,232,0.25);
+  }
+  .ct-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  .ct-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #e8e8e8;
+    margin-bottom: 12px;
+    opacity: 0; transform: translateY(12px);
+    transition: all 0.4s ease 0.1s;
+  }
+  .ct-title.visible { opacity: 1; transform: translateY(0); }
+  .ct-body {
+    font-size: 17px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    max-width: 550px;
+    opacity: 0; transform: translateY(12px);
+    transition: all 0.4s ease 0.2s;
+  }
+  .ct-body.visible { opacity: 1; transform: translateY(0); }
+  .ct-quote {
+    margin-top: 20px;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(232,232,232,0.3);
+    max-width: 500px;
+    line-height: 1.5;
+    opacity: 0; transform: translateY(12px);
+    transition: all 0.4s ease 0.3s;
+  }
+  .ct-quote.visible { opacity: 1; transform: translateY(0); }
+  .ct-quote strong { font-style: normal; color: rgba(232,232,232,0.45); }
+  .ct-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Dot nav (reusable) */
+  .dot-nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 4px;
+  }
+  .dot-track {
+    position: absolute;
+    left: 4px; right: 4px; top: 50%;
+    height: 1px;
+    background: rgba(232,232,232,0.08);
+    transform: translateY(-50%);
+  }
+  .dot-track-fill {
+    height: 100%; border-radius: 1px;
+    background: rgba(232,232,232,0.35);
+    transition: width 0.5s ease;
+  }
+  .dot-btn {
+    position: relative; z-index: 2; flex: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    background: none; border: none; cursor: pointer; padding: 8px 2px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dot-circle {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(232,232,232,0.1);
+    border: 1.5px solid rgba(232,232,232,0.15);
+    transition: all 0.3s;
+  }
+  .dot-btn:hover .dot-circle { background: rgba(232,232,232,0.2); border-color: rgba(232,232,232,0.35); }
+  .dot-btn.active .dot-circle {
+    background: #e8e8e8; border-color: #e8e8e8;
+    box-shadow: 0 0 0 3px rgba(232,232,232,0.1), 0 0 10px rgba(232,232,232,0.15);
+    width: 12px; height: 12px;
+  }
+  .dot-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: rgba(232,232,232,0.2);
+    letter-spacing: 0.5px; white-space: nowrap;
+    transition: color 0.3s;
+  }
+  .dot-btn.active .dot-label { color: rgba(232,232,232,0.6); }
+  .dot-btn:hover .dot-label { color: rgba(232,232,232,0.4); }
+
+  /* ─── Stat Slide ─── */
+  .stat-slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+  .stat-overline {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(232,232,232,0.35);
+  }
+  .stat-big {
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -3px;
+    color: #e8e8e8;
+    line-height: 1;
+  }
+  .stat-sub {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(232,232,232,0.4);
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  /* ─── Flywheel ─── */
+  .flywheel-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 48px;
+  }
+  .flywheel-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #e8e8e8;
+  }
+  .flywheel-diagram {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .fw-node {
+    padding: 14px 24px;
+    border: 1px solid rgba(232,232,232,0.1);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(232,232,232,0.7);
+    background: rgba(232,232,232,0.03);
+  }
+  .fw-node.fw-input {
+    border-color: rgba(100,160,255,0.2);
+    color: #7ab3ff;
+    background: rgba(100,160,255,0.05);
+  }
+  .fw-arrow { font-size: 18px; color: rgba(232,232,232,0.15); }
+  .fw-outputs { display: flex; flex-direction: column; gap: 10px; }
+  .flywheel-caption {
+    font-size: 15px;
+    color: rgba(232,232,232,0.35);
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  /* ─── Numbers Breakdown ─── */
+  .numbers-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+  }
+  .numbers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(232,232,232,0.08);
+    margin-bottom: 4px;
+  }
+  .numbers-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(232,232,232,0.45);
+  }
+  .numbers-cols { display: flex; gap: 24px; }
+  .numbers-col-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: rgba(232,232,232,0.25);
+    text-transform: uppercase;
+    width: 72px;
+    text-align: right;
+  }
+  .numbers-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: rgba(232,232,232,0.2);
+    text-transform: uppercase;
+    padding: 12px 0 6px 0;
+  }
+  .numbers-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(232,232,232,0.03);
+  }
+  .numbers-row:last-child { border-bottom: none; }
+  .numbers-item { font-size: 13px; color: rgba(232,232,232,0.6); flex: 1; }
+  .numbers-freq {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(232,232,232,0.25);
+    width: 90px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .numbers-vals { display: flex; gap: 24px; flex-shrink: 0; }
+  .numbers-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(232,232,232,0.5);
+    width: 72px;
+    text-align: right;
+  }
+  .numbers-val.vendor { color: rgba(232,232,232,0.2); text-decoration: line-through; }
+  .numbers-row.bundled .numbers-item { color: rgba(232,232,232,0.3); }
+  .numbers-row.bundled .numbers-val { color: rgba(232,232,232,0.15); font-size: 10px; text-decoration: none; }
+  .numbers-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0 0 0;
+    margin-top: 4px;
+    border-top: 1px solid rgba(232,232,232,0.1);
+  }
+  .numbers-total-label { font-size: 14px; font-weight: 600; color: #e8e8e8; }
+  .numbers-total-vals { display: flex; gap: 24px; }
+  .numbers-total-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8e8e8;
+    width: 72px;
+    text-align: right;
+  }
+  .numbers-total-val.vendor { color: rgba(232,232,232,0.3); text-decoration: line-through; }
+
+  /* ─── CTA Slide ─── */
+  .cta-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+  .cta-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #e8e8e8;
+  }
+  .cta-sub {
+    font-size: 17px;
+    color: rgba(232,232,232,0.4);
+    max-width: 400px;
+    line-height: 1.5;
+  }
+  .cta-contact {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: rgba(232,232,232,0.4);
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+  }
+
+  /* ─── Timeline bar ─── */
+  .article-timeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+  }
+  .article-timeline-track {
+    position: absolute;
+    top: 50%;
+    left: 0; right: 0;
+    height: 1px;
+    background: rgba(232,232,232,0.08);
+    transform: translateY(-50%);
+  }
+  .article-timeline-fill {
+    height: 100%;
+    background: rgba(232,232,232,0.3);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 1px;
+  }
+  .tl-dot {
+    position: relative;
+    z-index: 2;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(232,232,232,0.1);
+    border: 1.5px solid rgba(232,232,232,0.15);
+    cursor: pointer;
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  .tl-dot:hover { background: rgba(232,232,232,0.2); border-color: rgba(232,232,232,0.3); }
+  .tl-dot.active {
+    background: #e8e8e8;
+    border-color: #e8e8e8;
+    width: 10px; height: 10px;
+    box-shadow: 0 0 8px rgba(232,232,232,0.15);
+  }
+  .tl-dot-label {
+    position: absolute;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: rgba(232,232,232,0.15);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    transition: color 0.3s;
+  }
+  .tl-dot.active .tl-dot-label { color: rgba(232,232,232,0.5); }
+
+  /* ─── Flynn: Shoot List (Slide 2a) ─── */
+  .shoot-list-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  .shoot-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(232,232,232,0.08);
+    margin-bottom: 6px;
+  }
+  .shoot-list-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(232,232,232,0.45);
+  }
+  .shoot-list-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(232,232,232,0.25);
+  }
+  .shoot-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(232,232,232,0.03);
+  }
+  .shoot-row-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(232,232,232,0.3);
+    width: 110px;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+  }
+  .shoot-row-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e8e8e8;
+    flex: 1;
+  }
+  .shoot-row-desc {
+    font-size: 13px;
+    color: rgba(232,232,232,0.35);
+    flex: 1.5;
+  }
+  .shoot-list-footer {
+    padding-top: 14px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(232,232,232,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .shoot-list-total {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e8e8e8;
+  }
+  .shoot-list-note {
+    font-size: 12px;
+    color: rgba(232,232,232,0.25);
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── Flynn: The Gap (Slide 2b) ─── */
+  .gap-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+  .gap-overline {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(232,232,232,0.3);
+  }
+  .gap-headline {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: #e8e8e8;
+    line-height: 1.05;
+  }
+  .gap-detail {
+    font-size: 17px;
+    color: rgba(232,232,232,0.4);
+    line-height: 1.6;
+    max-width: 480px;
+  }
+  .gap-detail strong {
+    color: rgba(232,232,232,0.7);
+    font-weight: 600;
+  }
+
+  /* ─── Slide-advance arrow (bottom-right, every slide) ─── */
+  .slide-next {
+    position: absolute;
+    bottom: 36px;
+    right: 28px;
+    z-index: 20;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(232,232,232,0.2);
+    background: rgba(232,232,232,0.04);
+    color: rgba(232,232,232,0.5);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .slide-next:hover {
+    border-color: rgba(232,232,232,0.5);
+    color: #fff;
+    background: rgba(232,232,232,0.1);
+    transform: scale(1.08);
+  }
+  .slide-next.hero-next {
+    bottom: 36px;
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+    border-color: rgba(232,232,232,0.25);
+    color: rgba(232,232,232,0.7);
+    background: rgba(232,232,232,0.06);
+    animation: ct-pulse 2s ease-in-out 3;
+  }
+
+  /* ─── Global nav dots (right side) ─── */
+  .global-nav {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .global-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(232,232,232,0.12);
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+  .global-dot:hover { background: rgba(232,232,232,0.35); }
+  .global-dot.active {
+    background: #e8e8e8;
+    box-shadow: 0 0 5px rgba(232,232,232,0.2);
+    width: 8px; height: 8px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ─── Global right-side nav ─── -->
+<nav class="global-nav" id="globalNav"></nav>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 1: VIDEO HERO — Sound Legacy reel, address Chris -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="video-hero" id="s-hero">
+  <div class="video-hero-bg">
+    <iframe src="https://www.youtube.com/embed/Gzo7g5HIsU0?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&start=17&loop=1&playlist=Gzo7g5HIsU0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" allow="autoplay; encrypted-media" frameborder="0"></iframe>
+  </div>
+  <div class="video-hero-content">
+    <div style="display:flex;align-items:center;justify-content:center;gap:40px;margin-bottom:32px;">
+      <img src="logos/PRGLF white- png small.png" alt="GLF" style="width:clamp(100px,14vw,170px);height:auto;opacity:0.9;object-fit:contain;" />
+      <img src="logos/Sound_Legacy_Text_White.png" alt="Sound Legacy" style="height:clamp(80px,12vw,150px);width:auto;object-fit:contain;" />
+      <img src="logos/PRRIC-logo-transparent.png" alt="PRRIC" style="width:clamp(100px,14vw,170px);height:auto;opacity:0.9;object-fit:contain;" />
+    </div>
+    <p style="font-family:'Inter',sans-serif;font-size:clamp(15px,2.2vw,22px);font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#fff;line-height:1.6;text-shadow:0 2px 16px rgba(0,0,0,0.9),0 0 40px rgba(0,0,0,0.6);">GOOD LUCK FUND & PRRIC<br>MEDIA PARTNERSHIP PROPOSAL</p>
+  </div>
+  <button class="slide-next hero-next" data-next>↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 2: FLYNN — Case Study (click-through w/ arrows)  -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-flynn">
+  <div style="position:absolute;top:16px;left:48px;z-index:20;display:flex;flex-direction:column;gap:2px;">
+    <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What you've already been paying for.</div>
+    <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">The Hourly Model</div>
+  </div>
+  <div class="flynn-video-box" id="flynnVideoBox">
+    <iframe id="flynnIframe" data-src="https://www.youtube.com/embed/VDOjUmSt_3o?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=VDOjUmSt_3o&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" allow="autoplay; encrypted-media"></iframe>
+    <img id="flynnPhoto" src="logos/feb2-2025.jpg" style="display:none;width:100%;height:100%;position:absolute;inset:0;object-fit:cover;z-index:0;" />
+  </div>
+  <div class="slide-inner" data-ct-slide="flynn" style="z-index:10;position:absolute;top:80px;left:80px;bottom:80px;width:45%;max-width:500px;padding:32px 36px;display:flex;flex-direction:column;">
+    <div class="ct-top">
+      <div></div>
+      <div class="ct-counter" data-ct-counter="flynn"></div>
+    </div>
+    <div class="ct-center">
+      <div class="ct-title" data-ct-title="flynn"></div>
+      <div class="ct-body" data-ct-body="flynn"></div>
+      <div class="ct-quote" data-ct-quote="flynn"></div>
+    </div>
+    <div class="ct-bottom">
+      <div class="dot-nav" data-ct-nav="flynn">
+        <div class="dot-track"><div class="dot-track-fill" data-ct-fill="flynn"></div></div>
+      </div>
+    </div>
+  </div>
+  <button class="ct-side-arrow ct-left" data-ct-prev="flynn">&#8592;</button>
+  <button class="ct-side-arrow ct-right" data-ct-next="flynn">&#8594;</button>
+  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="flynn">↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 3: THE ENGINE — flywheel (1 input → 7 outputs)   -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-engine">
+  <div class="slide-inner">
+    <div class="flywheel-content">
+      <div class="flywheel-title">The Content Engine</div>
+      <div class="flywheel-diagram">
+        <div class="fw-node fw-input">1 Recording Session</div>
+        <div class="fw-arrow">→</div>
+        <div class="fw-outputs">
+          <div class="fw-node">Full Podcast Episode</div>
+          <div class="fw-node">5+ Short-Form Clips</div>
+          <div class="fw-node">Blog / Written Summary</div>
+          <div class="fw-node">Social Audiograms</div>
+          <div class="fw-node">Quote Graphics</div>
+          <div class="fw-node">Newsletter Content</div>
+          <div class="fw-node">Archive Footage</div>
+        </div>
+      </div>
+      <div class="flywheel-caption">
+        Every cycle compounds. One input, seven outputs.<br/>
+        Remember Diane Hennacy? 250K views from one interview. Imagine if that had been a podcast episode — you'd have had the episode, the clips, the newsletter, the social posts, and archive footage. That's what the engine does.
+      </div>
+    </div>
+  </div>
+  <button class="slide-next" data-next>↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 4: YOUR PRIORITIES — click-through w/ quotes     -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-priorities">
+  <div class="slide-inner" data-ct-slide="priorities">
+    <div class="ct-top">
+      <div class="ct-label">We Heard You — Your Priorities</div>
+      <div class="ct-counter" data-ct-counter="priorities"></div>
+    </div>
+    <div class="ct-center">
+      <div class="ct-title" data-ct-title="priorities"></div>
+      <div class="ct-body" data-ct-body="priorities"></div>
+      <div class="ct-quote" data-ct-quote="priorities"></div>
+    </div>
+    <div class="ct-bottom">
+      <div class="dot-nav" data-ct-nav="priorities">
+        <div class="dot-track"><div class="dot-track-fill" data-ct-fill="priorities"></div></div>
+      </div>
+    </div>
+  </div>
+  <button class="ct-side-arrow ct-left" data-ct-prev="priorities">&#8592;</button>
+  <button class="ct-side-arrow ct-right" data-ct-next="priorities">&#8594;</button>
+  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="priorities">↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 5: THE NUMBER — $25K hero + breakdown            -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-number">
+  <div class="slide-inner">
+    <div class="numbers-grid">
+      <div class="numbers-header">
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-2px;color:#e8e8e8;line-height:1;">$25,000<span style="font-size:0.4em;font-weight:400;color:rgba(232,232,232,0.4);letter-spacing:0;">/mo</span></div>
+          <div style="font-size:12px;color:rgba(232,232,232,0.3);letter-spacing:0.5px;">$300K/year · Vendor equivalent: <span style="text-decoration:line-through;">$450K</span></div>
+        </div>
+        <div class="numbers-cols">
+          <div class="numbers-col-label">Retainer</div>
+          <div class="numbers-col-label">Vendor Eq.</div>
+        </div>
+      </div>
+
+      <div class="numbers-section-label">Production</div>
+
+      <div class="numbers-row">
+        <div class="numbers-item">Video Podcasts</div>
+        <div class="numbers-freq">4×/mo</div>
+        <div class="numbers-vals">
+          <div class="numbers-val">$6,000</div>
+          <div class="numbers-val vendor">$9,000</div>
+        </div>
+      </div>
+      <div class="numbers-row">
+        <div class="numbers-item">Short-Form Content</div>
+        <div class="numbers-freq">5×/mo</div>
+        <div class="numbers-vals">
+          <div class="numbers-val">$4,500</div>
+          <div class="numbers-val vendor">$6,750</div>
+        </div>
+      </div>
+      <div class="numbers-row">
+        <div class="numbers-item">PRRIC Subject Films</div>
+        <div class="numbers-freq">3×/yr</div>
+        <div class="numbers-vals">
+          <div class="numbers-val">$3,500</div>
+          <div class="numbers-val vendor">$5,250</div>
+        </div>
+      </div>
+      <div class="numbers-row">
+        <div class="numbers-item">GLF Heritage Films</div>
+        <div class="numbers-freq">6×/yr</div>
+        <div class="numbers-vals">
+          <div class="numbers-val">$7,000</div>
+          <div class="numbers-val vendor">$10,500</div>
+        </div>
+      </div>
+      <div class="numbers-row">
+        <div class="numbers-item">GLF Mission Films</div>
+        <div class="numbers-freq">ongoing</div>
+        <div class="numbers-vals">
+          <div class="numbers-val">$2,000</div>
+          <div class="numbers-val vendor">$3,000</div>
+        </div>
+      </div>
+      <div class="numbers-row">
+        <div class="numbers-item">Event Documentation</div>
+        <div class="numbers-freq">4×/yr</div>
+        <div class="numbers-vals">
+          <div class="numbers-val">$1,000</div>
+          <div class="numbers-val vendor">$1,500</div>
+        </div>
+      </div>
+
+      <div class="numbers-section-label">Bundled Ongoing Services</div>
+
+      <div class="numbers-row bundled">
+        <div class="numbers-item">Digital Asset Management</div>
+        <div class="numbers-freq"></div>
+        <div class="numbers-vals"><div class="numbers-val">incl.</div><div class="numbers-val vendor">excluded</div></div>
+      </div>
+      <div class="numbers-row bundled">
+        <div class="numbers-item">AI-Powered Research & Archival</div>
+        <div class="numbers-freq"></div>
+        <div class="numbers-vals"><div class="numbers-val">incl.</div><div class="numbers-val vendor">excluded</div></div>
+      </div>
+      <div class="numbers-row bundled">
+        <div class="numbers-item">Content Strategy & Scheduling</div>
+        <div class="numbers-freq"></div>
+        <div class="numbers-vals"><div class="numbers-val">incl.</div><div class="numbers-val vendor">excluded</div></div>
+      </div>
+      <div class="numbers-row bundled">
+        <div class="numbers-item">Studio Setup & Consultation</div>
+        <div class="numbers-freq"></div>
+        <div class="numbers-vals"><div class="numbers-val">incl.</div><div class="numbers-val vendor">excluded</div></div>
+      </div>
+      <div class="numbers-row bundled">
+        <div class="numbers-item">Distribution & Platform Management</div>
+        <div class="numbers-freq"></div>
+        <div class="numbers-vals"><div class="numbers-val">incl.</div><div class="numbers-val vendor">excluded</div></div>
+      </div>
+      <div class="numbers-row bundled">
+        <div class="numbers-item">AV Event Support</div>
+        <div class="numbers-freq"></div>
+        <div class="numbers-vals"><div class="numbers-val">incl.</div><div class="numbers-val vendor">excluded</div></div>
+      </div>
+
+      <div class="numbers-total">
+        <div class="numbers-total-label">Monthly Total</div>
+        <div class="numbers-total-vals">
+          <div class="numbers-total-val">$25,000</div>
+          <div class="numbers-total-val vendor">$37,500</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:6px;">
+        <div style="font-size:10px;color:rgba(232,232,232,0.2);letter-spacing:0.3px;">6 services included at no additional cost</div>
+      </div>
+    </div>
+  </div>
+  <button class="slide-next" data-next>↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 6: SUSTAINABILITY — path to independence         -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-sustainability">
+  <div class="slide-inner" data-ct-slide="sustainability">
+    <div class="ct-top">
+      <div class="ct-label">Path to Independence</div>
+      <div class="ct-counter" data-ct-counter="sustainability"></div>
+    </div>
+    <div class="ct-center">
+      <div class="ct-title" data-ct-title="sustainability"></div>
+      <div class="ct-body" data-ct-body="sustainability"></div>
+      <div class="ct-quote" data-ct-quote="sustainability"></div>
+    </div>
+    <div class="ct-bottom">
+      <div class="dot-nav" data-ct-nav="sustainability">
+        <div class="dot-track"><div class="dot-track-fill" data-ct-fill="sustainability"></div></div>
+      </div>
+    </div>
+  </div>
+  <button class="ct-side-arrow ct-left" data-ct-prev="sustainability">&#8592;</button>
+  <button class="ct-side-arrow ct-right" data-ct-next="sustainability">&#8594;</button>
+  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="sustainability">↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 7: THE TERMS — contract structure                -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-terms">
+  <div class="slide-inner">
+    <div class="stat-slide-content">
+      <div class="stat-overline">Contract Structure</div>
+      <div class="stat-big" style="font-size:clamp(2rem,5vw,4rem);">12 months.<br/>3-month check-in.</div>
+      <div class="stat-sub">
+        Deliverables-based. If it's working, you'll know.<br/>
+        If it's not, clean exit. No obligations.<br/><br/>
+        <span style="color:#e8e8e8;font-weight:500;">Scope expands? We adjust together at the check-in.</span>
+      </div>
+      <p style="font-size:14px;color:rgba(232,232,232,0.3);max-width:450px;line-height:1.5;margin-top:16px;font-style:italic;">
+        "I hate difficult conversations around money… I just want it to be clear that it's working or not." — Chris
+      </p>
+    </div>
+  </div>
+  <button class="slide-next" data-next>↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 8: CTA — let's build this                        -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-cta">
+  <div class="slide-bg">
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a0c,#0d0d14);"></div>
+  </div>
+  <div class="slide-inner">
+    <div class="cta-content">
+      <div class="logos" style="opacity:0.4;">
+        <img class="logo-prric" src="logos/PRRIC-logo-transparent.png" alt="PRRIC" />
+        <div class="logo-divider"></div>
+        <img class="logo-sl" src="logos/Sound_Legacy_PNG_Small_Edit.png" alt="Sound Legacy" />
+        <div class="logo-divider"></div>
+        <img src="logos/PRGLF white- png small.png" alt="GLF" />
+      </div>
+      <h2 class="cta-title">Let's build this.</h2>
+      <p class="cta-sub">Two people. Dedicated to your mission. Every shoot becomes content. Every piece finds an audience.</p>
+      <div class="cta-contact">
+        paul@soundlegacy.co<br/>
+        (415) 555-0000
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ─── (Hero video is now a direct iframe embed — no JS needed) ───
+
+// ─── Click-through Data ───
+const CT_DATA = {
+  flynn: [
+    { title: 'Case Study: Every Town Has A Prophet', body: 'Oct 24, 2025 — Our short film premiered at the Dance Palace, 150+ attendees, Douglas Rushkoff keynote.\n\nHere\'s how it went down, and what a media partnership would unlock.', quote: '"Every Town Has a Prophet" — Feb–Oct 2025' },
+    { title: '2,800 Words. Zero Readers.', body: 'Chris writes a full article about FlynQ. David edits — two full passes. Ready to publish.\n\nThe post never ships. No distribution. No one ties it to the premiere.\n\nA complete content asset with zero distribution.', quote: '' },
+    { title: 'Production Without Distribution Is a Storage Bill.', body: '10 shoot days. 8 months. 150 people at the premiere. A 2,800-word article ready to publish.\n\n0 active distribution channels.\n\nThe retainer fixes this. Every shoot becomes content. Every piece finds an audience.', quote: '' },
+  ],
+  priorities: [
+    { title: 'Subject Films & UFO Documentary', body: 'Your #1 interest. We\'ve already started — a full newspaper archive of every recorded UFO sighting in Point Reyes going back to the 1960s. The plan: real investigation, real interviews, real lore. Not faking anything — documenting what people actually report. One flagship documentary that puts Point Reyes on the map as a destination.', quote: '"What if we actually made this like an alien destination? Turn into a UFO town." — Chris' },
+    { title: 'Real Research & Investigation', body: 'Not surface-level content. Deep archival research using newspapers.com, AI-powered discovery, and primary source investigation. We\'ve already built the pipeline — historical records, interview transcripts, cross-referenced timelines. Every project starts with real research before a camera turns on.', quote: '"I\'m really into doing like real research... I wanna prove some of this stuff out." — Chris' },
+    { title: 'Beat Telepathy Tapes', body: 'We reverse-engineered exactly how Telepathy Tapes became the #1 podcast. Episode structure, guest strategy, distribution mechanics, clip strategy — all documented. Your podcast launches with that playbook from day one. Not guessing. Running a proven system.', quote: '"Audacious Goal: Podcast Bigger than Telepathy Tapes" — Chris' },
+    { title: 'Community Activation', body: 'Quarterly screening events. Oral history recordings open to the public. Content that makes people feel ownership — not just spectators. Every event becomes content, every piece of content drives the next event. The community starts contributing because they see themselves in the work.', quote: '"How do we get people animated to participate and help?" — Chris' },
+    { title: 'The Hub / Studio', body: 'A dedicated studio in town — foot traffic, coffee shop proximity, people walking by and feeling welcome. Andrew has built hundreds of podcast setups. We handle design, gear, and ongoing operation. The studio doubles as a community space and a revenue generator through rentals.', quote: '"There\'s something about feeling welcome that the town might really appreciate." — Chris' },
+    { title: 'Scaling Beyond 30 People', body: 'Content is the multiplier. Right now the Eccentric Circle dinners reach 30 people in a room. With distribution, each dinner becomes a podcast episode reaching thousands, clips reaching tens of thousands, and a brand that draws new people in. The retainer turns a local gathering into a movement with reach.', quote: '"If I\'m basically paying for a social club with the same thirty people, it\'s not exactly what we\'re trying to do. We\'re trying to do it bigger." — Chris' },
+  ],
+  sustainability: [
+    { title: 'Studio Rentals', body: 'The studio isn\'t just a production space — it\'s a revenue stream. Podcast studios in Marin rent for $800–$1,800/day. Even at modest utilization, that\'s $40K–$90K/year in rental income that directly offsets retainer costs.', quote: '' },
+    { title: 'Quarterly Events', body: 'Screening nights, live podcast recordings, community showcases. Each event sells tickets, attracts sponsors, and generates content for the next quarter. One event can produce a full podcast episode, 10+ social clips, and newsletter material for weeks.', quote: '"A quarterly event where we\'re doing something cool with video." — Chris' },
+    { title: 'Sponsorships & Merch', body: 'As the podcast and brand grow, sponsorship revenue activates. Merch tied to the Point Reyes identity — not generic swag, but items people actually want. The UFO lore alone is a merch goldmine once the documentary builds the brand.', quote: '' },
+    { title: '501(c)(3) Grants', body: 'GLF\'s nonprofit status unlocks grant funding for documentary work, oral history preservation, and community programming. The retainer builds the portfolio that makes grant applications competitive. We handle the production documentation that funders require.', quote: '' },
+    { title: 'The Runway', body: 'Year 1: retainer funds everything. Year 2: revenue streams activate. Year 3+: retainer decreases as self-funding grows.', quote: '"That would be the home run where I seeded this... it\'s not an organization that professionally needs me to write checks." — Chris' },
+  ],
+}
+
+// ─── Click-through Engine ───
+const ctState = {}
+
+function initCT(name) {
+  ctState[name] = 0
+  const items = CT_DATA[name]
+  const nav = document.querySelector(`[data-ct-nav="${name}"]`)
+  items.forEach((item, i) => {
+    const btn = document.createElement('button')
+    btn.className = `dot-btn${i === 0 ? ' active' : ''}`
+    btn.innerHTML = `<div class="dot-circle"></div><div class="dot-label">${i + 1}</div>`
+    btn.addEventListener('click', () => goToCT(name, i))
+    nav.appendChild(btn)
+  })
+  // Wire side arrows
+  const prevBtn = document.querySelector(`[data-ct-prev="${name}"]`)
+  const nextBtn = document.querySelector(`[data-ct-next="${name}"]`)
+  if (prevBtn) prevBtn.addEventListener('click', () => goToCT(name, ctState[name] - 1))
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    nextBtn.classList.add('tapped')
+    goToCT(name, ctState[name] + 1)
+  })
+  goToCT(name, 0)
+}
+
+function goToCT(name, i) {
+  const items = CT_DATA[name]
+  if (i < 0 || i >= items.length) return
+  ctState[name] = i
+  const item = items[i]
+  document.querySelectorAll(`[data-ct-nav="${name}"] .dot-btn`).forEach((b, j) => b.classList.toggle('active', j === i))
+  document.querySelector(`[data-ct-fill="${name}"]`).style.width = `${(i / (items.length - 1)) * 100}%`
+  const counter = document.querySelector(`[data-ct-counter="${name}"]`)
+  if (counter) counter.textContent = `${i + 1} / ${items.length}`
+  const titleEl = document.querySelector(`[data-ct-title="${name}"]`)
+  const bodyEl = document.querySelector(`[data-ct-body="${name}"]`)
+  const quoteEl = document.querySelector(`[data-ct-quote="${name}"]`)
+  titleEl.classList.remove('visible')
+  bodyEl.classList.remove('visible')
+  if (quoteEl) quoteEl.classList.remove('visible')
+  setTimeout(() => {
+    titleEl.textContent = item.title
+    bodyEl.textContent = item.body
+    if (quoteEl) {
+      quoteEl.innerHTML = item.quote || ''
+      quoteEl.style.display = item.quote ? 'block' : 'none'
+    }
+    requestAnimationFrame(() => {
+      titleEl.classList.add('visible')
+      bodyEl.classList.add('visible')
+      if (quoteEl) quoteEl.classList.add('visible')
+    })
+  }, 150)
+  // Update side arrow states
+  const prevBtn = document.querySelector(`[data-ct-prev="${name}"]`)
+  const nextBtn = document.querySelector(`[data-ct-next="${name}"]`)
+  if (prevBtn) prevBtn.classList.toggle('disabled', i === 0)
+  if (nextBtn) nextBtn.classList.toggle('disabled', i === items.length - 1)
+  // Flynn: swap between video iframe and photo inside same box
+  if (name === 'flynn') {
+    const iframe = document.getElementById('flynnIframe')
+    const photo = document.getElementById('flynnPhoto')
+    if (iframe) iframe.style.display = (i === 0) ? '' : 'none'
+    if (photo) photo.style.display = (i === 1) ? 'block' : 'none'
+  }
+  // Show down-arrow when on last item
+  const doneBtn = document.querySelector(`[data-ct-done="${name}"]`)
+  if (doneBtn) {
+    const atEnd = i === items.length - 1
+    doneBtn.style.opacity = atEnd ? '1' : '0'
+    doneBtn.style.pointerEvents = atEnd ? 'auto' : 'none'
+  }
+}
+
+// ─── Keyboard navigation ───
+document.addEventListener('keydown', (e) => {
+  for (const name of Object.keys(ctState)) {
+    const el = document.querySelector(`[data-ct-slide="${name}"]`)
+    if (el && isInView(el)) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goToCT(name, ctState[name] + 1) }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goToCT(name, ctState[name] - 1) }
+      return
+    }
+  }
+})
+
+function isInView(el) {
+  const r = el.getBoundingClientRect()
+  return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.5
+}
+
+// ─── Global nav dots ───
+const allSlides = document.querySelectorAll('.video-hero, .slide')
+const globalNav = document.getElementById('globalNav')
+allSlides.forEach((slide, i) => {
+  const dot = document.createElement('button')
+  dot.className = 'global-dot'
+  dot.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }))
+  globalNav.appendChild(dot)
+})
+const globalDots = globalNav.querySelectorAll('.global-dot')
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const i = Array.from(allSlides).indexOf(entry.target)
+      globalDots.forEach((d, j) => d.classList.toggle('active', j === i))
+    }
+  })
+}, { threshold: 0.5 })
+allSlides.forEach(s => observer.observe(s))
+
+// ─── Slide-next arrows (scroll to next section) ───
+document.querySelectorAll('[data-next]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const section = btn.closest('.slide, .video-hero')
+    if (!section) return
+    const allSections = Array.from(document.querySelectorAll('.video-hero, .slide'))
+    const idx = allSections.indexOf(section)
+    if (idx >= 0 && idx < allSections.length - 1) {
+      allSections[idx + 1].scrollIntoView({ behavior: 'smooth' })
+    }
+  })
+})
+
+// ─── Lazy-load Flynn video when slide comes into view ───
+const flynnIframe = document.getElementById('flynnIframe')
+const flynnLazy = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && flynnIframe.dataset.src) {
+      flynnIframe.src = flynnIframe.dataset.src
+      delete flynnIframe.dataset.src
+      flynnLazy.disconnect()
+    }
+  })
+}, { threshold: 0.2 })
+flynnLazy.observe(document.getElementById('s-flynn'))
+
+// ─── Init ───
+initCT('flynn')
+initCT('priorities')
+initCT('sustainability')
+</script>
+
+</body>
+</html>
