@@ -989,7 +989,7 @@
 <section class="slide" id="s-transition" style="background:#000;display:flex;align-items:center;justify-content:center;">
   <div style="text-align:center;max-width:700px;padding:0 40px;">
     <p id="transHello" style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;opacity:0;transform:scale(0.97) translateY(6px);transition:opacity 1s ease, transform 1s ease;">Howdy Chris,</p>
-    <p id="transSub" style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:500;letter-spacing:-0.5px;color:#fff;line-height:1.2;margin-top:4px;opacity:0;transform:scale(0.97) translateY(6px);transition:opacity 1s ease 0.5s, transform 1s ease 0.5s;">Here's a quick look at what a media partnership with<br>Sound Legacy would unlock — and the numbers.</p>
+    <p id="transSub" style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:500;letter-spacing:-0.5px;color:#fff;line-height:1.2;margin-top:4px;opacity:0;transform:scale(0.97) translateY(6px);transition:opacity 1s ease 0.5s, transform 1s ease 0.5s;">Here's what a media partnership<br>with Sound Legacy looks like.</p>
   </div>
   <button class="slide-next" data-next style="position:absolute;bottom:32px;">↓</button>
 </section>
@@ -1158,7 +1158,7 @@
       <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
         <div id="hubTitle" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.5px;color:#fff;margin-bottom:6px;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;">The Good Luck Hub</div>
         <div style="margin-bottom:12px;"></div>
-        <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;max-width:550px;margin-bottom:36px;">The central operating system for both PRRIC & The Good Luck Fund — designed to systematize production, maximize cost-per-output, increase brand awareness, community engagement, and build infrastructure that scales. The Hub builds for intentional sustainability.</div>
+        <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;max-width:550px;margin-bottom:36px;">One operating system for both PRRIC & The Good Luck Fund. Every project scoped, produced, distributed, and archived — nothing sits in a folder, nothing falls through the cracks.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;max-width:800px;">
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Batched Production</div>
@@ -1334,9 +1334,25 @@
     <iframe id="flagshipIframe" data-src="https://www.youtube.com/embed/XETpXLhFp3I?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=XETpXLhFp3I&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" allow="autoplay; encrypted-media" style="width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;border:none;"></iframe>
     <div style="position:absolute;inset:0;background:rgba(10,10,10,0.72);z-index:1;"></div>
   </div>
-  <!-- Dark overlay for panels 2 & 3 -->
-  <div id="flagshipDarkBg" style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;z-index:0;background:#111;display:none;">
-    <div style="position:absolute;inset:0;background:rgba(10,10,10,0.9);z-index:1;"></div>
+  <!-- Panel 2 bg: Viral video proof grid -->
+  <div id="flagshipViralBg" style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;z-index:0;background:#0a0a0a;display:none;">
+    <div style="position:absolute;right:0;top:0;bottom:0;width:55%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:3px;padding:3px;opacity:0.55;">
+      <div style="overflow:hidden;position:relative;"><img src="logos/viral-10m.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">10M views</div></div>
+      <div style="overflow:hidden;position:relative;"><img src="logos/viral-1m.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">1.1M views</div></div>
+      <div style="overflow:hidden;position:relative;"><img src="logos/viral-271k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">271K views</div></div>
+      <div style="overflow:hidden;position:relative;"><img src="logos/viral-104k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">104K views</div></div>
+      <div style="overflow:hidden;position:relative;"><img src="logos/viral-99k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">99K views</div></div>
+      <div style="overflow:hidden;position:relative;"><img src="logos/viral-90k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">90K views</div></div>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.92) 35%, rgba(10,10,10,0.5) 65%, rgba(10,10,10,0.25) 100%);z-index:1;"></div>
+  </div>
+  <!-- Panel 3 bg: UFO newspaper research -->
+  <div id="flagshipUfoBg" style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;z-index:0;background:#0a0a0a;display:none;">
+    <div style="position:absolute;right:40px;top:50%;transform:translateY(-50%);width:42%;opacity:0.5;">
+      <img src="logos/ufo-newspaper.png" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1);" />
+      <div style="margin-top:8px;font-size:10px;color:rgba(255,255,255,0.3);text-align:center;letter-spacing:0.5px;">newspapers.com archive — Point Reyes, CA</div>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.9) 40%, rgba(10,10,10,0.45) 70%, rgba(10,10,10,0.2) 100%);z-index:1;"></div>
   </div>
   <div class="slide-inner" data-ct-slide="flagship">
     <div class="ct-top">
@@ -1419,8 +1435,8 @@ const CT_DATA = {
   ],
   flagship: [
     { title: 'Season 1: Dr. Edith Chen', body: 'You already have your first season.\n\nDr. Edith Chen — parapsychologist, consciousness researcher, one of the most compelling interviews in the field. We have video. She\'s ready to be the through-line for a serialized investigation that puts PRRIC on the map.\n\nDave hosts. Real field reporting. Real research. Not a talk show — an investigation with a subject worthy of a national audience.', quote: '"I keep talking about things that are exciting to me. I\'m really into doing like real research." — Chris' },
-    { title: 'We Reverse-Engineered Telepathy Tapes', body: 'We didn\'t just listen to Telepathy Tapes — we took it apart.\n\nEpisode structure. Guest booking strategy. Clip mechanics. Distribution pipeline. Release cadence. How they turned one interview into 30+ pieces of content across platforms. We documented exactly how they became the #1 podcast.\n\nDr. Diane Hennacy hit 250,000 views with no podcast, no system, no distribution plan. Imagine that interview inside this engine.\n\nYour podcast launches with their playbook from day one.', quote: '"Audacious Goal: Podcast Bigger than Telepathy Tapes" — Chris' },
-    { title: 'The UFO Documentary', body: 'You pitched the idea. We already built the archive.\n\nEvery recorded UFO sighting in Point Reyes — newspapers.com articles going back to the 1960s. Jeremy\'s experience. Heather\'s sighting. Real investigation, real interviews, real lore.\n\nThe retainer turns this from a back-of-mind idea into a production plan with a timeline, a distribution strategy, and a premiere date. Not faking anything — documenting what people actually report.\n\nOne flagship film that puts Point Reyes on the map.', quote: '"What if we actually made this like an alien destination? Turn into a UFO town." — Chris' },
+    { title: 'We Reverse-Engineered Telepathy Tapes', body: 'We didn\'t just listen to Telepathy Tapes — we took it apart.\n\nEpisode structure. Guest booking strategy. Clip mechanics. Distribution pipeline. Release cadence. How they turned one interview into 30+ pieces of content across platforms.\n\nWe\'ve already proven we can make content travel — 10M, 1.1M, 271K views across different accounts and formats. Dr. Diane Hennacy Powell hit 271K views with no podcast, no system, no distribution plan.\n\nImagine those numbers inside a real engine. Your podcast launches with their playbook from day one.', quote: '"Audacious Goal: Podcast Bigger than Telepathy Tapes" — Chris' },
+    { title: 'The UFO Documentary', body: 'You pitched the idea. We already started the research.\n\nThat\'s a real newspapers.com clipping behind this text — "UFO Sightings Confirmed," Point Reyes, archived and indexed. We\'ve pulled every recorded sighting going back to the 1960s. Jeremy\'s experience. Heather\'s sighting. Real lore, real history, real witnesses.\n\nThe retainer turns this from a back-of-mind idea into a production plan with a timeline, a distribution strategy, and a premiere date.\n\nOne flagship film that puts Point Reyes on the map.', quote: '"What if we actually made this like an alien destination? Turn into a UFO town." — Chris' },
   ],
 }
 
@@ -1590,15 +1606,12 @@ function goToCT(name, i) {
   // Flagship: swap backgrounds per panel
   if (name === 'flagship') {
     const videoBg = document.getElementById('flagshipVideoBg')
-    const darkBg = document.getElementById('flagshipDarkBg')
-    if (videoBg && darkBg) {
-      if (i === 0) {
-        videoBg.style.display = ''
-        darkBg.style.display = 'none'
-      } else {
-        videoBg.style.display = 'none'
-        darkBg.style.display = ''
-      }
+    const viralBg = document.getElementById('flagshipViralBg')
+    const ufoBg = document.getElementById('flagshipUfoBg')
+    if (videoBg && viralBg && ufoBg) {
+      videoBg.style.display = (i === 0) ? '' : 'none'
+      viralBg.style.display = (i === 1) ? '' : 'none'
+      ufoBg.style.display = (i === 2) ? '' : 'none'
     }
   }
   // Update hint text on Flynn
@@ -1731,7 +1744,7 @@ if (flynnSection) {
     })
   }, { threshold: 0.5 }).observe(flynnSection)
 
-  // Debounced scroll — handles both directions
+  // Debounced scroll — handles both directions, ignores trackpad momentum
   let flynnScrollLock = false
   flynnSection.addEventListener('wheel', function(e) {
     const items = CT_DATA.flynn
@@ -1739,6 +1752,8 @@ if (flynnSection) {
     const onFirstPanel = ctState.flynn === 0
     const scrollingDown = e.deltaY > 0
     const scrollingUp = e.deltaY < 0
+    // Ignore tiny trackpad momentum events (residual after a swipe)
+    if (Math.abs(e.deltaY) < 15) { e.preventDefault(); return }
     // Allow native scroll-up on first panel (go back to Transition)
     if (onFirstPanel && scrollingUp) return
     // Allow native scroll-down on last panel (go to Hub)
@@ -1754,13 +1769,37 @@ if (flynnSection) {
     }
     setTimeout(() => { flynnScrollLock = false }, 1200)
   }, { passive: false })
+  // Touch: track swipe direction for mobile
+  let flynnTouchStartY = 0
+  flynnSection.addEventListener('touchstart', function(e) {
+    flynnTouchStartY = e.touches[0].clientY
+  }, { passive: true })
   flynnSection.addEventListener('touchmove', function(e) {
     const items = CT_DATA.flynn
-    if (ctState.flynn < items.length - 1) {
-      e.preventDefault()
-      e.stopPropagation()
-    }
+    const onFirstPanel = ctState.flynn === 0
+    const onLastPanel = ctState.flynn >= items.length - 1
+    const dy = flynnTouchStartY - e.touches[0].clientY
+    const swipingDown = dy > 0
+    const swipingUp = dy < 0
+    // Allow native scroll on boundary panels in the exit direction
+    if (onFirstPanel && swipingUp) return
+    if (onLastPanel && swipingDown) return
+    e.preventDefault()
+    e.stopPropagation()
   }, { passive: false })
+  flynnSection.addEventListener('touchend', function(e) {
+    const dy = flynnTouchStartY - e.changedTouches[0].clientY
+    if (Math.abs(dy) < 40) return // ignore small taps
+    if (flynnScrollLock) return
+    flynnScrollLock = true
+    const items = CT_DATA.flynn
+    if (dy > 0 && ctState.flynn < items.length - 1) {
+      goToCT('flynn', ctState.flynn + 1)
+    } else if (dy < 0 && ctState.flynn > 0) {
+      goToCT('flynn', ctState.flynn - 1)
+    }
+    setTimeout(() => { flynnScrollLock = false }, 1200)
+  }, { passive: true })
 }
 
 // ─── Team cycle ───
