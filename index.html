@@ -1091,17 +1091,17 @@
     <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What a media partnership solves.</div>
     <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">One system. Every project. Maximum output per dollar.</div>
   </div>
-  <div style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;background:#111;z-index:1;">
+  <div style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;background:#111;z-index:1;border:1px solid rgba(255,255,255,0.12);">
     <div style="position:absolute;inset:0;background:rgba(10,10,10,0.85);z-index:1;"></div>
     <div style="position:relative;z-index:2;width:100%;height:100%;display:flex;padding:60px 80px;">
       <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
         <div id="hubTitle" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.5px;color:#fff;margin-bottom:6px;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;">The Good Luck Hub</div>
-        <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);margin-bottom:12px;">(Name pending)</div>
-        <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;max-width:550px;margin-bottom:36px;">The central operating system for both PRRIC & The Good Luck Fund — designed to systematize production, maximize cost-per-output, increase brand awareness, community engagement, and build infrastructure that scales.</div>
+        <div style="margin-bottom:12px;"></div>
+        <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;max-width:550px;margin-bottom:36px;">The central operating system for both PRRIC & The Good Luck Fund — designed to systematize production, maximize cost-per-output, increase brand awareness, community engagement, and build infrastructure that scales. The Hub builds for intentional sustainability.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;max-width:800px;">
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Batched Production</div>
-            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">No more 8 separate trips. Shoot days planned, stacked, maximized</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Shoot days planned, stacked, maximized for efficiency.</div>
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Built-In Distribution</div>
@@ -1116,24 +1116,28 @@
             <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">One session produces podcast, clips, newsletter, social, blog</div>
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
-            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Revenue Offsets</div>
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Built to Self-Fund</div>
             <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Studio rentals, event tickets, sponsorships. The Hub pays for itself</div>
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Archival System</div>
-            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Research database, asset management. Nothing gets lost or duplicated</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Nothing lost, continually managed. A living asset archive for Point Reyes and the Point Reyes community.</div>
           </div>
         </div>
       </div>
       <div style="flex:0 0 35%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:40px;">
-        <div style="font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Meet your team.</div>
-        <div id="teamPhotoBox" style="width:240px;height:240px;border-radius:50%;overflow:hidden;cursor:pointer;border:2px solid rgba(255,255,255,0.15);transition:border-color 0.3s ease;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);" onclick="cycleTeam()">
-          <img id="teamPhoto" src="" style="width:100%;height:100%;object-fit:cover;display:none;" />
-          <div id="teamInitial" style="font-size:64px;font-weight:700;color:rgba(255,255,255,0.3);">D</div>
+        <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:16px;">Meet your team.</div>
+        <div id="teamPhotoBox" style="width:100%;max-width:300px;aspect-ratio:3/4;border-radius:16px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.1);transition:border-color 0.3s ease;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);position:relative;" onclick="cycleTeam()">
+          <img id="teamPhoto" src="logos/dave.png" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;" />
+          <div style="position:absolute;inset:0;box-shadow:inset 0 0 60px 20px rgba(0,0,0,0.5);z-index:1;pointer-events:none;"></div>
+          <div id="teamInitial" style="font-size:64px;font-weight:700;color:rgba(255,255,255,0.15);display:none;">D</div>
+          <div style="position:absolute;top:12px;right:12px;z-index:3;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;pointer-events:none;"><span style="font-size:14px;color:rgba(255,255,255,0.7);">&#8594;</span></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(transparent,rgba(0,0,0,0.85));z-index:2;">
+            <div id="teamName" style="font-size:20px;font-weight:700;color:#fff;">Dave</div>
+            <div id="teamRole" style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:2px;">PRRIC Podcast Host & Research Lead</div>
+          </div>
         </div>
-        <div id="teamName" style="font-size:22px;font-weight:700;color:#fff;margin-top:16px;">Dave</div>
-        <div id="teamRole" style="font-size:14px;color:rgba(255,255,255,0.5);margin-top:4px;">Placeholder title</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:12px;">Click to cycle →</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:12px;">Click to cycle</div>
       </div>
     </div>
   </div>
@@ -1141,40 +1145,15 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════ -->
-<!-- SLIDE 4: YOUR PRIORITIES — click-through w/ quotes     -->
-<!-- ════════════════════════════════════════════════════════ -->
-<section class="slide" id="s-priorities">
-  <div class="slide-inner" data-ct-slide="priorities">
-    <div class="ct-top">
-      <div class="ct-label">We Heard You — Your Priorities</div>
-      <div class="ct-counter" data-ct-counter="priorities"></div>
-    </div>
-    <div class="ct-center">
-      <div class="ct-title" data-ct-title="priorities"></div>
-      <div class="ct-body" data-ct-body="priorities"></div>
-      <div class="ct-quote" data-ct-quote="priorities"></div>
-    </div>
-    <div class="ct-bottom">
-      <div class="dot-nav" data-ct-nav="priorities">
-        <div class="dot-track"><div class="dot-track-fill" data-ct-fill="priorities"></div></div>
-      </div>
-    </div>
-  </div>
-  <button class="ct-side-arrow ct-left" data-ct-prev="priorities">&#8592;</button>
-  <button class="ct-side-arrow ct-right" data-ct-next="priorities">&#8594;</button>
-  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="priorities">↓</button>
-</section>
-
-<!-- ════════════════════════════════════════════════════════ -->
-<!-- SLIDE 5: THE NUMBER — $25K hero + breakdown            -->
+<!-- SLIDE 4: THE NUMBER — $25K hero + breakdown            -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="slide" id="s-number">
   <div class="slide-inner">
     <div class="numbers-grid">
       <div class="numbers-header">
         <div style="display:flex;flex-direction:column;gap:4px;">
-          <div style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-2px;color:#e8e8e8;line-height:1;">$25,000<span style="font-size:0.4em;font-weight:400;color:rgba(232,232,232,0.4);letter-spacing:0;">/mo</span></div>
-          <div style="font-size:12px;color:rgba(232,232,232,0.3);letter-spacing:0.5px;">$300K/year · Vendor equivalent: <span style="text-decoration:line-through;">$450K</span></div>
+          <div style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-2px;color:#e8e8e8;line-height:1;">$28,000<span style="font-size:0.4em;font-weight:400;color:rgba(232,232,232,0.4);letter-spacing:0;">/mo</span></div>
+          <div style="font-size:12px;color:rgba(232,232,232,0.3);letter-spacing:0.5px;">$336K/year · Vendor equivalent: <span style="text-decoration:line-through;">$504K</span></div>
         </div>
         <div class="numbers-cols">
           <div class="numbers-col-label">Retainer</div>
@@ -1188,48 +1167,48 @@
         <div class="numbers-item">Video Podcasts</div>
         <div class="numbers-freq">4×/mo</div>
         <div class="numbers-vals">
-          <div class="numbers-val">$6,000</div>
-          <div class="numbers-val vendor">$9,000</div>
+          <div class="numbers-val">$7,000</div>
+          <div class="numbers-val vendor">$10,500</div>
         </div>
       </div>
       <div class="numbers-row">
         <div class="numbers-item">Short-Form Content</div>
         <div class="numbers-freq">5×/mo</div>
         <div class="numbers-vals">
-          <div class="numbers-val">$4,500</div>
-          <div class="numbers-val vendor">$6,750</div>
+          <div class="numbers-val">$5,000</div>
+          <div class="numbers-val vendor">$7,500</div>
         </div>
       </div>
       <div class="numbers-row">
         <div class="numbers-item">PRRIC Subject Films</div>
         <div class="numbers-freq">3×/yr</div>
         <div class="numbers-vals">
-          <div class="numbers-val">$3,500</div>
-          <div class="numbers-val vendor">$5,250</div>
+          <div class="numbers-val">$4,000</div>
+          <div class="numbers-val vendor">$6,000</div>
         </div>
       </div>
       <div class="numbers-row">
         <div class="numbers-item">GLF Heritage Films</div>
         <div class="numbers-freq">6×/yr</div>
         <div class="numbers-vals">
-          <div class="numbers-val">$7,000</div>
-          <div class="numbers-val vendor">$10,500</div>
+          <div class="numbers-val">$8,000</div>
+          <div class="numbers-val vendor">$12,000</div>
         </div>
       </div>
       <div class="numbers-row">
         <div class="numbers-item">GLF Mission Films</div>
         <div class="numbers-freq">ongoing</div>
         <div class="numbers-vals">
-          <div class="numbers-val">$2,000</div>
-          <div class="numbers-val vendor">$3,000</div>
+          <div class="numbers-val">$2,500</div>
+          <div class="numbers-val vendor">$3,750</div>
         </div>
       </div>
       <div class="numbers-row">
         <div class="numbers-item">Event Documentation</div>
         <div class="numbers-freq">4×/yr</div>
         <div class="numbers-vals">
-          <div class="numbers-val">$1,000</div>
-          <div class="numbers-val vendor">$1,500</div>
+          <div class="numbers-val">$1,500</div>
+          <div class="numbers-val vendor">$2,250</div>
         </div>
       </div>
 
@@ -1269,8 +1248,8 @@
       <div class="numbers-total">
         <div class="numbers-total-label">Monthly Total</div>
         <div class="numbers-total-vals">
-          <div class="numbers-total-val">$25,000</div>
-          <div class="numbers-total-val vendor">$37,500</div>
+          <div class="numbers-total-val">$28,000</div>
+          <div class="numbers-total-val vendor">$42,000</div>
         </div>
       </div>
       <div style="display:flex;justify-content:flex-end;margin-top:6px;">
@@ -1282,28 +1261,53 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════ -->
-<!-- SLIDE 6: SUSTAINABILITY — path to independence         -->
+<!-- SLIDE 5: YOUR PRIORITIES — click-through w/ quotes     -->
 <!-- ════════════════════════════════════════════════════════ -->
-<section class="slide" id="s-sustainability">
-  <div class="slide-inner" data-ct-slide="sustainability">
+<section class="slide" id="s-priorities">
+  <div class="slide-inner" data-ct-slide="priorities">
     <div class="ct-top">
-      <div class="ct-label">Path to Independence</div>
-      <div class="ct-counter" data-ct-counter="sustainability"></div>
+      <div class="ct-label">We Heard You — Your Priorities</div>
+      <div class="ct-counter" data-ct-counter="priorities"></div>
     </div>
     <div class="ct-center">
-      <div class="ct-title" data-ct-title="sustainability"></div>
-      <div class="ct-body" data-ct-body="sustainability"></div>
-      <div class="ct-quote" data-ct-quote="sustainability"></div>
+      <div class="ct-title" data-ct-title="priorities"></div>
+      <div class="ct-body" data-ct-body="priorities"></div>
+      <div class="ct-quote" data-ct-quote="priorities"></div>
     </div>
     <div class="ct-bottom">
-      <div class="dot-nav" data-ct-nav="sustainability">
-        <div class="dot-track"><div class="dot-track-fill" data-ct-fill="sustainability"></div></div>
+      <div class="dot-nav" data-ct-nav="priorities">
+        <div class="dot-track"><div class="dot-track-fill" data-ct-fill="priorities"></div></div>
       </div>
     </div>
   </div>
-  <button class="ct-side-arrow ct-left" data-ct-prev="sustainability">&#8592;</button>
-  <button class="ct-side-arrow ct-right" data-ct-next="sustainability">&#8594;</button>
-  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="sustainability">↓</button>
+  <button class="ct-side-arrow ct-left" data-ct-prev="priorities">&#8592;</button>
+  <button class="ct-side-arrow ct-right" data-ct-next="priorities">&#8594;</button>
+  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="priorities">↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 6: FLAGSHIP CONTENT — Seasonal Podcast + UFO Doc -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-flagship">
+  <div class="slide-inner" data-ct-slide="flagship">
+    <div class="ct-top">
+      <div class="ct-label">Flagship Content</div>
+      <div class="ct-counter" data-ct-counter="flagship"></div>
+    </div>
+    <div class="ct-center">
+      <div class="ct-title" data-ct-title="flagship"></div>
+      <div class="ct-body" data-ct-body="flagship"></div>
+      <div class="ct-quote" data-ct-quote="flagship"></div>
+    </div>
+    <div class="ct-bottom">
+      <div class="dot-nav" data-ct-nav="flagship">
+        <div class="dot-track"><div class="dot-track-fill" data-ct-fill="flagship"></div></div>
+      </div>
+    </div>
+  </div>
+  <button class="ct-side-arrow ct-left" data-ct-prev="flagship">&#8592;</button>
+  <button class="ct-side-arrow ct-right" data-ct-next="flagship">&#8594;</button>
+  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="flagship">↓</button>
 </section>
 
 <!-- ════════════════════════════════════════════════════════ -->
@@ -1371,12 +1375,11 @@ const CT_DATA = {
     { title: 'The Hub / Studio', body: 'A dedicated studio in town — foot traffic, coffee shop proximity, people walking by and feeling welcome. Andrew has built hundreds of podcast setups. We handle design, gear, and ongoing operation. The studio doubles as a community space and a revenue generator through rentals.', quote: '"There\'s something about feeling welcome that the town might really appreciate." — Chris' },
     { title: 'Scaling Beyond 30 People', body: 'Content is the multiplier. Right now the Eccentric Circle dinners reach 30 people in a room. With distribution, each dinner becomes a podcast episode reaching thousands, clips reaching tens of thousands, and a brand that draws new people in. The retainer turns a local gathering into a movement with reach.', quote: '"If I\'m basically paying for a social club with the same thirty people, it\'s not exactly what we\'re trying to do. We\'re trying to do it bigger." — Chris' },
   ],
-  sustainability: [
-    { title: 'Studio Rentals', body: 'The studio isn\'t just a production space — it\'s a revenue stream. Podcast studios in Marin rent for $800–$1,800/day. Even at modest utilization, that\'s $40K–$90K/year in rental income that directly offsets retainer costs.', quote: '' },
-    { title: 'Quarterly Events', body: 'Screening nights, live podcast recordings, community showcases. Each event sells tickets, attracts sponsors, and generates content for the next quarter. One event can produce a full podcast episode, 10+ social clips, and newsletter material for weeks.', quote: '"A quarterly event where we\'re doing something cool with video." — Chris' },
-    { title: 'Sponsorships & Merch', body: 'As the podcast and brand grow, sponsorship revenue activates. Merch tied to the Point Reyes identity — not generic swag, but items people actually want. The UFO lore alone is a merch goldmine once the documentary builds the brand.', quote: '' },
-    { title: '501(c)(3) Grants', body: 'GLF\'s nonprofit status unlocks grant funding for documentary work, oral history preservation, and community programming. The retainer builds the portfolio that makes grant applications competitive. We handle the production documentation that funders require.', quote: '' },
-    { title: 'The Runway', body: 'Year 1: retainer funds everything. Year 2: revenue streams activate. Year 3+: retainer decreases as self-funding grows.', quote: '"That would be the home run where I seeded this... it\'s not an organization that professionally needs me to write checks." — Chris' },
+  flagship: [
+    { title: 'The Seasonal Podcast', body: 'Investigative. Highly produced. Audio-first — like Telepathy Tapes, but with real field reporting. Each season follows one overarching theme: UFOs in Point Reyes, consciousness research, local lore. Expert interviews, archival research, on-location reporting. Not a talk show — a serialized investigation.\n\nWe reverse-engineered the Telepathy Tapes playbook: episode structure, clip strategy, distribution mechanics. Your podcast launches with that system from day one.', quote: '"Audacious Goal: Podcast Bigger than Telepathy Tapes" — Chris' },
+    { title: 'Two Tracks, One Engine', body: 'PRRIC Podcast — national audience. Paranormal investigation, consciousness research, investigative journalism. Dave hosts. Season arcs with expert guests and field reporting.\n\nGLF Podcast — local roots. Oral histories, community stories, building lore. The people and places that make Point Reyes what it is.\n\nBoth run through the same production engine. Same studio, same team, same distribution system. Two brands, one operation.', quote: '"How do we get people animated to participate and help?" — Chris' },
+    { title: 'The Supporting Ecosystem', body: 'The podcast isn\'t standalone — it\'s the center of a content ecosystem.\n\nSubstack for deep research and fan engagement. Show notes with source materials. Social clips from every episode. Newsletter content for weeks. A community platform where listeners contribute research, report sightings, participate in citizen science.\n\nEvery episode compounds. The audience builds the archive.', quote: '"I\'m really into doing like real research... I wanna prove some of this stuff out." — Chris' },
+    { title: 'The UFO Documentary', body: 'Season 1\'s companion piece. A feature-length documentary investigating every recorded UFO sighting in Point Reyes going back to the 1960s. Real newspapers.com archival research. Real interviews. Real locations.\n\nNot faking anything — documenting what people actually report. One flagship film that puts Point Reyes on the map as a destination.\n\nThe podcast builds the audience. The documentary is the event.', quote: '"What if we actually made this like an alien destination? Turn into a UFO town." — Chris' },
   ],
 }
 
@@ -1620,9 +1623,9 @@ if (flynnSection) {
 
 // ─── Team cycle ───
 const teamMembers = [
-  { name: 'Dave', role: 'Placeholder title', photo: '' },
-  { name: 'Andrew', role: 'Placeholder title', photo: 'logos/andrew.jpg' },
-  { name: 'Paul', role: 'Placeholder title', photo: 'logos/paul.jpeg' },
+  { name: 'Dave', role: 'PRRIC Podcast Host & Research Lead', photo: 'logos/dave.png' },
+  { name: 'Andrew', role: 'Good Luck Fund Podcast Host & Production', photo: 'logos/andrew.jpg' },
+  { name: 'Paul', role: 'Creative Director & Systems Architect', photo: 'logos/paul.jpeg' },
 ]
 let teamIdx = 0
 function cycleTeam() {
@@ -1655,11 +1658,14 @@ if (hubSlide) {
       if (e.isIntersecting) {
         const hubTitle = document.getElementById('hubTitle')
         if (hubTitle) { hubTitle.style.opacity = '1'; hubTitle.style.transform = 'translateY(0)'; }
-        document.querySelectorAll('[data-hub]').forEach((item, idx) => {
+        const hubItems = document.querySelectorAll('[data-hub]')
+        hubItems.forEach((item, idx) => {
+          // 2-column grid: items 0,2,4 = left col (row 0,1,2), items 1,3,5 = right col (row 0,1,2)
+          const row = Math.floor(idx / 2)
           setTimeout(() => {
             item.style.opacity = '1'
             item.style.transform = 'translateX(0)'
-          }, 600 + (idx * 250))
+          }, 600 + (row * 300))
         })
       }
     })
@@ -1669,7 +1675,7 @@ if (hubSlide) {
 // ─── Init ───
 initCT('flynn')
 initCT('priorities')
-initCT('sustainability')
+initCT('flagship')
 </script>
 
 </body>
