@@ -1164,6 +1164,7 @@
       </div>
     </div>
   </div>
+  <div id="flynnCounter" style="position:absolute;top:24px;right:48px;z-index:20;font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:0.5px;"></div>
   <button class="ct-side-arrow ct-left" data-ct-prev="flynn">&#8592;</button>
   <button class="ct-side-arrow ct-right" data-ct-next="flynn">&#8594;</button>
   <div id="flynnHint" style="position:absolute;bottom:24px;right:40px;z-index:20;font-size:13px;font-weight:400;letter-spacing:0.5px;color:rgba(255,255,255,0.35);pointer-events:none;transition:opacity 0.3s ease;">Click → to explore</div>
@@ -1208,7 +1209,7 @@
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">AI-Powered Research &amp; Workflow</div>
-            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Transcription, archival, repurposing, and deep research — automated where possible, so more hours go to creative work.</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Research, transcription, and content repurposing — automated workflows to enable more hours towards creative work.</div>
           </div>
         </div>
       </div>
@@ -1486,6 +1487,8 @@ function goToCT(name, i) {
   if (nextBtn) nextBtn.classList.toggle('disabled', i === items.length - 1)
   // Flynn: swap between video, timeline, gaps, and other panels
   if (name === 'flynn') {
+    const flynnCounterEl = document.getElementById('flynnCounter')
+    if (flynnCounterEl) flynnCounterEl.textContent = `${i + 1} / ${items.length}`
     const videoBox = document.getElementById('flynnVideoBox')
     const timeline = document.getElementById('flynnTimeline')
     const gaps = document.getElementById('flynnGaps')
