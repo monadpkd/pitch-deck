@@ -8,6 +8,10 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+  @keyframes pulseArrow {
+    0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+    50% { transform: translateY(-50%) scale(1.08); box-shadow: 0 0 20px 4px rgba(255,255,255,0.15); }
+  }
 
   body {
     background: #0a0a0a;
@@ -27,6 +31,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  #s-transition {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  #s-transition * {
+    color: #fff !important;
   }
 
   /* Background layer */
@@ -394,12 +405,13 @@
   }
   .ct-side-arrow.ct-right {
     right: 28px;
-    width: 56px;
-    height: 56px;
-    font-size: 22px;
-    border-color: rgba(232,232,232,0.25);
-    color: rgba(232,232,232,0.7);
-    background: rgba(232,232,232,0.06);
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+    border-color: rgba(255,255,255,0.5);
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+    animation: pulseArrow 2s ease infinite;
     animation: ct-pulse 2s ease-in-out 3;
   }
   .ct-side-arrow.ct-right.tapped { animation: none; }
@@ -970,9 +982,10 @@
 <!-- ════════════════════════════════════════════════════════ -->
 <!-- SLIDE 1b: TRANSITION — black screen text beat           -->
 <!-- ════════════════════════════════════════════════════════ -->
-<section class="slide" id="s-transition" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center;">
+<section class="slide" id="s-transition" style="background:#000;display:flex;align-items:center;justify-content:center;">
   <div style="text-align:center;max-width:700px;padding:0 40px;">
-    <p style="font-size:clamp(1.4rem,3vw,2.2rem);font-weight:600;letter-spacing:-0.3px;color:#fff;line-height:1.4;">One project. Under the hourly model.</p>
+    <p id="transHello" style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;opacity:0;transform:scale(0.97) translateY(6px);transition:opacity 1s ease, transform 1s ease;">Howdy Chris,</p>
+    <p id="transSub" style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:500;letter-spacing:-0.5px;color:#fff;line-height:1.2;margin-top:4px;opacity:0;transform:scale(0.97) translateY(6px);transition:opacity 1s ease 0.5s, transform 1s ease 0.5s;">Here's a quick look at what a media partnership with<br>Sound Legacy would unlock — and the numbers.</p>
   </div>
   <button class="slide-next" data-next style="position:absolute;bottom:32px;">↓</button>
 </section>
@@ -1066,33 +1079,61 @@
   </div>
   <button class="ct-side-arrow ct-left" data-ct-prev="flynn">&#8592;</button>
   <button class="ct-side-arrow ct-right" data-ct-next="flynn">&#8594;</button>
-  <div style="position:absolute;bottom:24px;right:40px;z-index:20;font-size:13px;font-weight:400;letter-spacing:0.5px;color:rgba(255,255,255,0.35);pointer-events:none;">Click → to explore</div>
+  <div id="flynnHint" style="position:absolute;bottom:24px;right:40px;z-index:20;font-size:13px;font-weight:400;letter-spacing:0.5px;color:rgba(255,255,255,0.35);pointer-events:none;transition:opacity 0.3s ease;">Click → to explore</div>
   <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="flynn">↓</button>
 </section>
 
 <!-- ════════════════════════════════════════════════════════ -->
-<!-- SLIDE 3: THE ENGINE — flywheel (1 input → 7 outputs)   -->
+<!-- SLIDE 3: THE GOOD LUCK HUB                              -->
 <!-- ════════════════════════════════════════════════════════ -->
-<section class="slide" id="s-engine">
-  <div class="slide-inner">
-    <div class="flywheel-content">
-      <div class="flywheel-title">The Content Engine</div>
-      <div class="flywheel-diagram">
-        <div class="fw-node fw-input">1 Recording Session</div>
-        <div class="fw-arrow">→</div>
-        <div class="fw-outputs">
-          <div class="fw-node">Full Podcast Episode</div>
-          <div class="fw-node">5+ Short-Form Clips</div>
-          <div class="fw-node">Blog / Written Summary</div>
-          <div class="fw-node">Social Audiograms</div>
-          <div class="fw-node">Quote Graphics</div>
-          <div class="fw-node">Newsletter Content</div>
-          <div class="fw-node">Archive Footage</div>
+<section class="slide" id="s-engine" style="background:#000;">
+  <div style="position:absolute;top:16px;left:48px;z-index:20;display:flex;flex-direction:column;gap:2px;">
+    <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What a media partnership solves.</div>
+    <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">One system. Every project. Maximum output per dollar.</div>
+  </div>
+  <div style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;background:#111;z-index:1;">
+    <div style="position:absolute;inset:0;background:rgba(10,10,10,0.85);z-index:1;"></div>
+    <div style="position:relative;z-index:2;width:100%;height:100%;display:flex;padding:60px 80px;">
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+        <div id="hubTitle" style="font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.5px;color:#fff;margin-bottom:6px;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;">The Good Luck Hub</div>
+        <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);margin-bottom:12px;">(Name pending)</div>
+        <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;max-width:550px;margin-bottom:36px;">The central operating system for both PRRIC & The Good Luck Fund — designed to systematize production, maximize cost-per-output, increase brand awareness, community engagement, and build infrastructure that scales.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;max-width:800px;">
+          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Batched Production</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">No more 8 separate trips. Shoot days planned, stacked, maximized</div>
+          </div>
+          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Built-In Distribution</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Every deliverable has a channel before it's produced</div>
+          </div>
+          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Defined Scope & Revisions</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Clear deliverables, revision caps, structured feedback</div>
+          </div>
+          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Content Multiplier</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">One session produces podcast, clips, newsletter, social, blog</div>
+          </div>
+          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Revenue Offsets</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Studio rentals, event tickets, sponsorships. The Hub pays for itself</div>
+          </div>
+          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Archival System</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Research database, asset management. Nothing gets lost or duplicated</div>
+          </div>
         </div>
       </div>
-      <div class="flywheel-caption">
-        Every cycle compounds. One input, seven outputs.<br/>
-        Remember Diane Hennacy? 250K views from one interview. Imagine if that had been a podcast episode — you'd have had the episode, the clips, the newsletter, the social posts, and archive footage. That's what the engine does.
+      <div style="flex:0 0 35%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:40px;">
+        <div style="font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Meet your team.</div>
+        <div id="teamPhotoBox" style="width:240px;height:240px;border-radius:50%;overflow:hidden;cursor:pointer;border:2px solid rgba(255,255,255,0.15);transition:border-color 0.3s ease;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);" onclick="cycleTeam()">
+          <img id="teamPhoto" src="" style="width:100%;height:100%;object-fit:cover;display:none;" />
+          <div id="teamInitial" style="font-size:64px;font-weight:700;color:rgba(255,255,255,0.3);">D</div>
+        </div>
+        <div id="teamName" style="font-size:22px;font-weight:700;color:#fff;margin-top:16px;">Dave</div>
+        <div id="teamRole" style="font-size:14px;color:rgba(255,255,255,0.5);margin-top:4px;">Placeholder title</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:12px;">Click to cycle →</div>
       </div>
     </div>
   </div>
@@ -1463,6 +1504,15 @@ function goToCT(name, i) {
       }
     }
   }
+  // Update hint text on Flynn
+  if (name === 'flynn') {
+    const hint = document.getElementById('flynnHint')
+    if (hint) {
+      if (i === 0) { hint.textContent = 'Click → to explore'; hint.style.opacity = '1'; }
+      else if (i === items.length - 1) { hint.textContent = '↓ Scroll to continue'; hint.style.opacity = '1'; }
+      else { hint.style.opacity = '0'; }
+    }
+  }
   // Show down-arrow when on last item
   const doneBtn = document.querySelector(`[data-ct-done="${name}"]`)
   if (doneBtn) {
@@ -1534,6 +1584,87 @@ const flynnLazy = new IntersectionObserver((entries) => {
   })
 }, { threshold: 0.2 })
 flynnLazy.observe(document.getElementById('s-flynn'))
+
+// ─── Transition slide fade-in ───
+const transSlide = document.getElementById('s-transition')
+if (transSlide) {
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.getElementById('transHello').style.opacity = '1'
+        document.getElementById('transHello').style.transform = 'scale(1) translateY(0)'
+        document.getElementById('transSub').style.opacity = '1'
+        document.getElementById('transSub').style.transform = 'scale(1) translateY(0)'
+      }
+    })
+  }, { threshold: 0.5 }).observe(transSlide)
+}
+
+// ─── Block scroll on Flynn until last click-through ───
+const flynnSection = document.getElementById('s-flynn')
+if (flynnSection) {
+  flynnSection.addEventListener('wheel', function(e) {
+    const items = CT_DATA.flynn
+    if (e.deltaY > 0 && ctState.flynn < items.length - 1) {
+      e.preventDefault()
+      goToCT('flynn', ctState.flynn + 1)
+    }
+  }, { passive: false })
+  flynnSection.addEventListener('touchmove', function(e) {
+    const items = CT_DATA.flynn
+    if (ctState.flynn < items.length - 1) {
+      e.preventDefault()
+    }
+  }, { passive: false })
+}
+
+// ─── Team cycle ───
+const teamMembers = [
+  { name: 'Dave', role: 'Placeholder title', photo: '' },
+  { name: 'Andrew', role: 'Placeholder title', photo: 'logos/andrew.jpg' },
+  { name: 'Paul', role: 'Placeholder title', photo: 'logos/paul.jpeg' },
+]
+let teamIdx = 0
+function cycleTeam() {
+  teamIdx = (teamIdx + 1) % teamMembers.length
+  const m = teamMembers[teamIdx]
+  const photoEl = document.getElementById('teamPhoto')
+  const initialEl = document.getElementById('teamInitial')
+  const nameEl = document.getElementById('teamName')
+  const roleEl = document.getElementById('teamRole')
+  const box = document.getElementById('teamPhotoBox')
+  box.style.borderColor = 'rgba(255,255,255,0.4)'
+  setTimeout(() => { box.style.borderColor = 'rgba(255,255,255,0.15)' }, 300)
+  if (m.photo) {
+    photoEl.src = m.photo
+    photoEl.style.display = ''
+    if (initialEl) initialEl.style.display = 'none'
+  } else {
+    photoEl.style.display = 'none'
+    if (initialEl) { initialEl.style.display = ''; initialEl.textContent = m.name.charAt(0); }
+  }
+  nameEl.textContent = m.name
+  roleEl.textContent = m.role
+}
+
+// ─── Good Luck Hub animation ───
+const hubSlide = document.getElementById('s-engine')
+if (hubSlide) {
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const hubTitle = document.getElementById('hubTitle')
+        if (hubTitle) { hubTitle.style.opacity = '1'; hubTitle.style.transform = 'translateY(0)'; }
+        document.querySelectorAll('[data-hub]').forEach((item, idx) => {
+          setTimeout(() => {
+            item.style.opacity = '1'
+            item.style.transform = 'translateX(0)'
+          }, 600 + (idx * 250))
+        })
+      }
+    })
+  }, { threshold: 0.3 }).observe(hubSlide)
+}
 
 // ─── Init ───
 initCT('flynn')
