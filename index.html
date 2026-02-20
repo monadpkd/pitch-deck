@@ -644,18 +644,18 @@
   .numbers-cols { display: flex; gap: 24px; }
   .numbers-col-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 1px;
-    color: rgba(232,232,232,0.5);
+    color: rgba(255,255,255,0.85);
     text-transform: uppercase;
     width: 80px;
     text-align: right;
   }
   .numbers-section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 1.5px;
-    color: rgba(232,232,232,0.45);
+    color: rgba(255,255,255,0.8);
     text-transform: uppercase;
     padding: 14px 0 8px 0;
   }
@@ -664,14 +664,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 9px 0;
-    border-bottom: 1px solid rgba(232,232,232,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
   .numbers-row:last-child { border-bottom: none; }
-  .numbers-item { font-size: 15px; color: rgba(232,232,232,0.85); flex: 1; }
+  .numbers-item { font-size: 16px; color: #fff; flex: 1; }
   .numbers-freq {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: rgba(232,232,232,0.4);
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
     width: 90px;
     text-align: center;
     flex-shrink: 0;
@@ -679,34 +679,34 @@
   .numbers-vals { display: flex; gap: 24px; flex-shrink: 0; }
   .numbers-val {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(232,232,232,0.8);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
     width: 80px;
     text-align: right;
   }
-  .numbers-val.vendor { color: rgba(232,232,232,0.35); text-decoration: line-through; }
-  .numbers-row.bundled .numbers-item { color: rgba(232,232,232,0.5); }
-  .numbers-row.bundled .numbers-val { color: rgba(232,232,232,0.3); font-size: 11px; text-decoration: none; }
+  .numbers-val.vendor { color: rgba(255,255,255,0.5); text-decoration: line-through; }
+  .numbers-row.bundled .numbers-item { color: rgba(255,255,255,0.75); }
+  .numbers-row.bundled .numbers-val { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: none; }
   .numbers-total {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 14px 0 0 0;
     margin-top: 4px;
-    border-top: 1px solid rgba(232,232,232,0.1);
+    border-top: 1px solid rgba(255,255,255,0.15);
   }
-  .numbers-total-label { font-size: 14px; font-weight: 600; color: #e8e8e8; }
+  .numbers-total-label { font-size: 15px; font-weight: 700; color: #fff; }
   .numbers-total-vals { display: flex; gap: 24px; }
   .numbers-total-val {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
-    color: #e8e8e8;
+    color: #fff;
     width: 72px;
     text-align: right;
   }
-  .numbers-total-val.vendor { color: rgba(232,232,232,0.3); text-decoration: line-through; }
+  .numbers-total-val.vendor { color: rgba(255,255,255,0.4); text-decoration: line-through; }
 
   /* ─── CTA Slide ─── */
   .cta-content {
@@ -1188,15 +1188,11 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;max-width:800px;">
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Batched Production</div>
-            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Shoot days planned, stacked, maximized for efficiency.</div>
-          </div>
-          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
-            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Pre-Production Pipeline</div>
-            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Every project scoped before a camera turns on.</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Every project scoped before a camera turns on. Shoot days planned, stacked, maximized for efficiency.</div>
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Content Multiplier</div>
-            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Every shoot feeds the full ecosystem — podcast, clips, social, newsletter, blog, archive.</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Every shoot feeds the full ecosystem for PRRIC &amp; The Good Luck Fund — podcast, clips, social, newsletter, blog, archive.</div>
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Built-In Distribution</div>
@@ -1204,11 +1200,15 @@
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Built to Self-Fund</div>
-            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Designed to generate revenue through studio rentals, event tickets, and sponsorships — reducing reliance on the retainer over time.</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Studio rentals, event tickets, sponsorships — and as the audience and brand grow, so do the revenue streams. Reducing reliance on the retainer over time.</div>
           </div>
           <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
             <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">Community Archive</div>
             <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">A living record of Point Reyes — continually managed, never lost. Built for the community.</div>
+          </div>
+          <div class="hub-item" data-hub style="opacity:0;transform:translateX(-12px);transition:opacity 0.5s ease, transform 0.5s ease;">
+            <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;">AI-Powered Research &amp; Workflow</div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.4;">Transcription, archival, repurposing, and deep research — automated where possible, so more hours go to creative work.</div>
           </div>
         </div>
       </div>
@@ -1244,7 +1244,7 @@
       <div class="numbers-header">
         <div style="display:flex;flex-direction:column;gap:4px;">
           <div style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-2px;color:#e8e8e8;line-height:1;">$28,000<span style="font-size:0.4em;font-weight:400;color:rgba(232,232,232,0.4);letter-spacing:0;">/mo</span></div>
-          <div style="font-size:14px;color:rgba(232,232,232,0.55);letter-spacing:0.5px;">$336K/year · Vendor equivalent: <span style="text-decoration:line-through;">$504K</span></div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.7);letter-spacing:0.5px;">$336K/year · Vendor equivalent: <span style="text-decoration:line-through;">$504K</span></div>
         </div>
         <div class="numbers-cols">
           <div class="numbers-col-label">Retainer</div>
@@ -1339,33 +1339,13 @@
         </div>
       </div>
       <div style="display:flex;justify-content:flex-end;margin-top:6px;">
-        <div style="font-size:10px;color:rgba(232,232,232,0.2);letter-spacing:0.3px;">6 services included at no additional cost</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);letter-spacing:0.3px;">6 services included at no additional cost</div>
       </div>
     </div>
   </div>
   <button class="slide-next" data-next>↓</button>
 </section>
 
-<!-- ════════════════════════════════════════════════════════ -->
-<!-- SLIDE 4B: PLAIN-ENGLISH BREAKDOWN                       -->
-<!-- ════════════════════════════════════════════════════════ -->
-<section class="slide" id="s-breakdown">
-  <div style="position:absolute;top:16px;left:48px;z-index:20;display:flex;flex-direction:column;gap:2px;">
-    <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What this looks like.</div>
-    <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">What $28K/month actually gets you</div>
-  </div>
-  <div class="slide-inner" style="display:flex;align-items:center;justify-content:center;">
-    <div style="max-width:780px;padding:80px 48px;">
-      <div style="display:flex;flex-direction:column;gap:28px;font-size:17px;color:rgba(255,255,255,0.85);line-height:1.7;">
-        <p>Two people, two nonprofits. <strong style="color:#fff;">112 hours/month each</strong> at <strong style="color:#fff;">$125/hr</strong>, up from $100/hr. Nearly three-quarters of our focus, dedicated exclusively to PRRIC and The Good Luck Fund. More output per dollar, by design.</p>
-        <p>Everything on the previous slide — podcasts, short-form, subject films, heritage films, event coverage — plus five bundled services that vendors charge separately for: <strong style="color:#fff;">AV support, asset management, research &amp; automation, content strategy, and distribution.</strong></p>
-        <p>Every project builds on the last. The archive grows, the audience compounds, the systems get smarter. Everything built with efficiency and sustainability as the goal — not a monthly expense, but infrastructure that appreciates.</p>
-        <p><strong style="color:#fff;">If a new idea lands, we scope it together and adjust priorities within the retainer.</strong></p>
-      </div>
-    </div>
-  </div>
-  <button class="slide-next" data-next>↓</button>
-</section>
 
 <!-- ════════════════════════════════════════════════════════ -->
 <!-- SLIDE 5: YOUR IDEAS — Edith Ubuntu Chan / Telepathy Tapes / UFO Doc -->
@@ -1442,7 +1422,7 @@ const CT_DATA = {
     { title: '', body: '', quote: '' },
   ],
   flagship: [
-    { title: 'Beat The Telepathy Tapes.', body: 'At our last meeting, you had two big ideas. A <strong>documentary about UFOs in Point Reyes</strong>, and <strong>PRRIC\'s Podcast on scale with The Telepathy Tapes</strong>. Projects like these would require a significant shift in retainer scope — and that\'s exactly what the model is designed for.\n\nWe could shift to a <strong>seasonal model for the PRRIC Podcast</strong> — a highly produced, investigative series built around a single subject. Audio-first, with a companion documentary and a full digital ecosystem around it.\n\nOur idea?\n\n<span style="font-size:clamp(18px,2.8vw,32px);font-weight:700;letter-spacing:-0.5px;display:block;margin:8px 0;white-space:nowrap;">Season 1: PRRIC Investigates Dr. Edith Ubuntu Chan</span>\n\n...and we\'ve already reverse engineered Telepathy Tapes\' exact production pipeline.', quote: '' },
+    { title: 'Beat The Telepathy Tapes.', body: 'At our last meeting, you had two big ideas.\n\nA <strong>documentary about UFOs in Point Reyes</strong>, and <strong>PRRIC\'s Podcast on scale with The Telepathy Tapes</strong>.\n\nProjects like these would require a significant shift in retainer scope — and that\'s exactly what the model is designed for.\n\nWe could shift to a <strong>seasonal model for the PRRIC Podcast</strong> — a highly produced, investigative series built around a single subject. Audio-first, with a companion documentary and a full digital ecosystem around it.\n\nOur idea?\n\n<span style="font-size:clamp(18px,2.8vw,32px);font-weight:700;letter-spacing:-0.5px;display:block;margin:8px 0;white-space:nowrap;">Season 1: PRRIC Investigates Dr. Edith Ubuntu Chan</span>\n\n...and we\'ve already reverse engineered Telepathy Tapes\' exact production pipeline.', quote: '' },
   ],
 }
 
