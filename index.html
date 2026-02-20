@@ -1762,24 +1762,30 @@ if (transSlide) {
 // ─── Flynn scroll logic ───
 const flynnSection = document.getElementById('s-flynn')
 if (flynnSection) {
-  let flynnExitedBelow = false
+  let flynnEnteredFromBelow = false
 
   new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) {
-        // Flynn left viewport — track direction (top < 0 means we scrolled past it downward)
-        flynnExitedBelow = e.boundingClientRect.top < 0
+        // Track which direction Flynn left the viewport
+        // top < 0 means Flynn scrolled above viewport (user went past it downward)
       }
-      if (e.isIntersecting && !flynnExitedBelow) {
-        // Entering from above (first visit or scrolling down from Transition) — reset
-        goToCT('flynn', 0)
+      if (e.isIntersecting) {
+        // Determine entry direction: if Flynn's top is near/above viewport center, entering from below
+        flynnEnteredFromBelow = e.boundingClientRect.top < window.innerHeight * 0.3
+        if (!flynnEnteredFromBelow) {
+          // Entering from above (first visit) — reset to panel 1
+          goToCT('flynn', 0)
+        }
+        // Entering from below — don't reset, don't trap
       }
-      // Entering from below (scrolling back up) — keep current panel state
     })
   }, { threshold: 0.5 }).observe(flynnSection)
 
-  // Scroll wheel: no panel advancing — just block scroll unless at boundary
+  // Scroll wheel: block scroll unless at boundary OR entered from below
   flynnSection.addEventListener('wheel', function(e) {
+    // If user scrolled back up into Flynn, let scroll pass through freely
+    if (flynnEnteredFromBelow) return
     const items = CT_DATA.flynn
     const onLastPanel = ctState.flynn >= items.length - 1
     const onFirstPanel = ctState.flynn === 0
@@ -1792,12 +1798,13 @@ if (flynnSection) {
     // Block scroll in all other cases — user must use arrows
     e.preventDefault()
   }, { passive: false })
-  // Touch: block swipe unless at boundary — user must use arrows
+  // Touch: block swipe unless at boundary or entered from below
   let flynnTouchStartY = 0
   flynnSection.addEventListener('touchstart', function(e) {
     flynnTouchStartY = e.touches[0].clientY
   }, { passive: true })
   flynnSection.addEventListener('touchmove', function(e) {
+    if (flynnEnteredFromBelow) return
     const items = CT_DATA.flynn
     const onFirstPanel = ctState.flynn === 0
     const onLastPanel = ctState.flynn >= items.length - 1
