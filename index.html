@@ -968,11 +968,21 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════ -->
+<!-- SLIDE 1b: TRANSITION — black screen text beat           -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="slide" id="s-transition" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center;">
+  <div style="text-align:center;max-width:700px;padding:0 40px;">
+    <p style="font-size:clamp(1.4rem,3vw,2.2rem);font-weight:600;letter-spacing:-0.3px;color:#fff;line-height:1.4;">One project. Under the hourly model.</p>
+  </div>
+  <button class="slide-next" data-next style="position:absolute;bottom:32px;">↓</button>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
 <!-- SLIDE 2: FLYNN — Case Study (click-through w/ arrows)  -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="slide" id="s-flynn">
   <div style="position:absolute;top:16px;left:48px;z-index:20;display:flex;flex-direction:column;gap:2px;">
-    <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What you've already been paying for.</div>
+    <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What you've already funded.</div>
     <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">The Hourly Model</div>
   </div>
   <div class="flynn-video-box" id="flynnVideoBox">
@@ -1003,6 +1013,41 @@
       </div>
     </div>
   </div>
+  <div class="timeline-overlay" id="flynnGaps" style="display:none;">
+    <div class="timeline-wrap" style="justify-content:center;padding:80px 100px;">
+      <div class="gaps-header" id="gapsHeader" style="font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:48px;opacity:0;transform:translateY(12px);transition:opacity 0.6s ease, transform 0.6s ease;">What fell through the cracks.</div>
+      <div class="gaps-list">
+        <div class="gap-item" data-gap style="display:flex;align-items:flex-start;gap:20px;margin-bottom:36px;opacity:0;transform:translateX(-16px);transition:opacity 0.5s ease, transform 0.5s ease;">
+          <div style="min-width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);margin-top:10px;"></div>
+          <div>
+            <div style="font-size:22px;font-weight:600;margin-bottom:6px;">Blog post — written, edited, never published</div>
+            <div style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.4;">2,800 words. Two full editing passes. Ready to go. Still sitting in a doc.</div>
+          </div>
+        </div>
+        <div class="gap-item" data-gap style="display:flex;align-items:flex-start;gap:20px;margin-bottom:36px;opacity:0;transform:translateX(-16px);transition:opacity 0.5s ease, transform 0.5s ease;">
+          <div style="min-width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);margin-top:10px;"></div>
+          <div>
+            <div style="font-size:22px;font-weight:600;margin-bottom:6px;">Chalkboard lecture — filmed, never posted</div>
+            <div style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.4;">Full shoot day. Edited. No distribution channel to put it on.</div>
+          </div>
+        </div>
+        <div class="gap-item" data-gap style="display:flex;align-items:flex-start;gap:20px;margin-bottom:36px;opacity:0;transform:translateX(-16px);transition:opacity 0.5s ease, transform 0.5s ease;">
+          <div style="min-width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);margin-top:10px;"></div>
+          <div>
+            <div style="font-size:22px;font-weight:600;margin-bottom:6px;">Final film — completed, never released</div>
+            <div style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.4;">The main deliverable. Screened once. No public release, no streaming, no follow-up.</div>
+          </div>
+        </div>
+        <div class="gap-item" data-gap style="display:flex;align-items:flex-start;gap:20px;margin-bottom:36px;opacity:0;transform:translateX(-16px);transition:opacity 0.5s ease, transform 0.5s ease;">
+          <div style="min-width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);margin-top:10px;"></div>
+          <div>
+            <div style="font-size:22px;font-weight:600;margin-bottom:6px;">Public backlash — no crisis response</div>
+            <div style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.4;">Facebook comments hit. No moderation plan, no PR strategy, no prepared response.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="slide-inner" data-ct-slide="flynn" style="z-index:10;position:absolute;top:80px;left:80px;bottom:80px;width:45%;max-width:500px;padding:32px 36px;display:flex;flex-direction:column;">
     <div class="ct-top">
       <div></div>
@@ -1021,6 +1066,7 @@
   </div>
   <button class="ct-side-arrow ct-left" data-ct-prev="flynn">&#8592;</button>
   <button class="ct-side-arrow ct-right" data-ct-next="flynn">&#8594;</button>
+  <div style="position:absolute;bottom:24px;right:40px;z-index:20;font-size:13px;font-weight:400;letter-spacing:0.5px;color:rgba(255,255,255,0.35);pointer-events:none;">Click → to explore</div>
   <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="flynn">↓</button>
 </section>
 
@@ -1273,8 +1319,8 @@
 const CT_DATA = {
   flynn: [
     { title: 'Case Study: Every Town Has A Prophet', body: 'Oct 24, 2025 — Our short film premiered at the Dance Palace, 150+ attendees, Douglas Rushkoff keynote.\n\nHere\'s how it went down, and what a media partnership would unlock.', quote: '"Every Town Has a Prophet" — Feb–Oct 2025' },
-    { title: '2,800 Words. Zero Readers.', body: 'Chris writes a full article about FlynQ. David edits — two full passes. Ready to publish.\n\nThe post never ships. No distribution. No one ties it to the premiere.\n\nA complete content asset with zero distribution.', quote: '' },
-    { title: 'Production Without Distribution Is a Storage Bill.', body: '10 shoot days. 8 months. 150 people at the premiere. A 2,800-word article ready to publish.\n\n0 active distribution channels.\n\nThe retainer fixes this. Every shoot becomes content. Every piece finds an audience.', quote: '' },
+    { title: '', body: '', quote: '' },
+    { title: '', body: '', quote: '' },
   ],
   priorities: [
     { title: 'Subject Films & UFO Documentary', body: 'Your #1 interest. We\'ve already started — a full newspaper archive of every recorded UFO sighting in Point Reyes going back to the 1960s. The plan: real investigation, real interviews, real lore. Not faking anything — documenting what people actually report. One flagship documentary that puts Point Reyes on the map as a destination.', quote: '"What if we actually made this like an alien destination? Turn into a UFO town." — Chris' },
@@ -1351,19 +1397,20 @@ function goToCT(name, i) {
   const nextBtn = document.querySelector(`[data-ct-next="${name}"]`)
   if (prevBtn) prevBtn.classList.toggle('disabled', i === 0)
   if (nextBtn) nextBtn.classList.toggle('disabled', i === items.length - 1)
-  // Flynn: swap between video, timeline, and other panels
+  // Flynn: swap between video, timeline, gaps, and other panels
   if (name === 'flynn') {
     const videoBox = document.getElementById('flynnVideoBox')
     const timeline = document.getElementById('flynnTimeline')
+    const gaps = document.getElementById('flynnGaps')
     const slideInner = document.querySelector('[data-ct-slide="flynn"]')
     // Slide 0: video + text overlay
     if (videoBox) videoBox.style.display = (i === 0) ? '' : 'none'
-    // Slide 1: timeline (full takeover, hide text overlay)
+    // Hide text overlay on slides 1 and 2
+    if (slideInner) slideInner.style.display = (i === 0) ? '' : 'none'
+    // Slide 1: timeline
     if (timeline) {
       if (i === 1) {
         timeline.style.display = 'block'
-        slideInner.style.display = 'none'
-        // Trigger timeline animation
         setTimeout(() => {
           document.getElementById('tlHeader').classList.add('visible')
           document.getElementById('tlSub').classList.add('visible')
@@ -1380,8 +1427,6 @@ function goToCT(name, i) {
         }, 1200 + (tlItems.length * 400) + 300)
       } else {
         timeline.style.display = 'none'
-        slideInner.style.display = ''
-        // Reset timeline animation state
         const tlHeader = document.getElementById('tlHeader')
         const tlSub = document.getElementById('tlSub')
         const tlLine = document.getElementById('tlLine')
@@ -1391,6 +1436,30 @@ function goToCT(name, i) {
         if (tlLine) tlLine.classList.remove('draw')
         if (tlSummary) tlSummary.classList.remove('visible')
         document.querySelectorAll('[data-tl]').forEach(item => item.classList.remove('visible'))
+      }
+    }
+    // Slide 2: gaps
+    if (gaps) {
+      if (i === 2) {
+        gaps.style.display = 'block'
+        setTimeout(() => {
+          document.getElementById('gapsHeader').style.opacity = '1'
+          document.getElementById('gapsHeader').style.transform = 'translateY(0)'
+        }, 300)
+        document.querySelectorAll('[data-gap]').forEach((item, idx) => {
+          setTimeout(() => {
+            item.style.opacity = '1'
+            item.style.transform = 'translateX(0)'
+          }, 800 + (idx * 500))
+        })
+      } else {
+        gaps.style.display = 'none'
+        const gapsHeader = document.getElementById('gapsHeader')
+        if (gapsHeader) { gapsHeader.style.opacity = '0'; gapsHeader.style.transform = 'translateY(12px)'; }
+        document.querySelectorAll('[data-gap]').forEach(item => {
+          item.style.opacity = '0'
+          item.style.transform = 'translateX(-16px)'
+        })
       }
     }
   }
