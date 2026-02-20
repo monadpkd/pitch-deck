@@ -481,6 +481,12 @@
   }
   .ct-quote.visible { opacity: 1; transform: translateY(0); }
   .ct-quote strong { font-style: normal; color: rgba(232,232,232,0.45); }
+
+  /* ─── Flagship-specific centering (does NOT affect Flynn) ─── */
+  #s-flagship .ct-center { align-items: center; text-align: center; }
+  #s-flagship .ct-title { text-align: center; }
+  #s-flagship .ct-body { text-align: center; max-width: 700px; }
+
   .ct-bottom {
     display: flex;
     flex-direction: column;
@@ -1088,7 +1094,7 @@
   <div class="timeline-overlay" id="flynnOpCost" style="display:none;">
     <div class="timeline-wrap" style="justify-content:center;align-items:center;text-align:center;padding:60px 80px;">
       <div id="opCostHeader" style="font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px;opacity:0;transform:translateY(12px);transition:opacity 0.6s ease, transform 0.6s ease;">Without a system, opportunity cost compounds.</div>
-      <div id="opCostSub" style="font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:36px;max-width:700px;line-height:1.5;opacity:0;transform:translateY(12px);transition:opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;">You've funded dozens of shoot days, interviews, and events over the past year. Most sit stalled, unpublished, unseen. Access to some of the most influential authors, intellectuals, weirdos, and scientists in the country — with no system to get it out the door.</div>
+      <div id="opCostSub" style="font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:36px;max-width:700px;line-height:1.5;opacity:0;transform:translateY(12px);transition:opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;">You've funded dozens of shoot days, interviews, and events over the past year. Many sit unstalled, unpublished, unseen. Access to some of the most influential authors, intellectuals, weirdos, and scientists in the country — with no system to get it out the door.</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:820px;margin:0 auto;">
         <div data-opcost style="opacity:0;transform:scale(0.95);transition:opacity 0.5s ease, transform 0.5s ease;border-radius:10px;overflow:hidden;position:relative;aspect-ratio:16/10;">
           <img src="logos/inez-storer.png" style="width:100%;height:100%;object-fit:cover;" />
@@ -1273,7 +1279,7 @@
         </div>
       </div>
       <div class="numbers-row">
-        <div class="numbers-item">GLF Heritage Films</div>
+        <div class="numbers-item">GLF Building Films</div>
         <div class="numbers-freq">6×/yr</div>
         <div class="numbers-vals">
           <div class="numbers-val">$8,000</div>
@@ -1354,7 +1360,7 @@
         <p>Two people, two nonprofits. <strong style="color:#fff;">112 hours/month each</strong> at <strong style="color:#fff;">$125/hr</strong>, up from $100/hr. Nearly three-quarters of our focus, dedicated exclusively to PRRIC and The Good Luck Fund. More output per dollar, by design.</p>
         <p>Everything on the previous slide — podcasts, short-form, subject films, heritage films, event coverage — plus five bundled services that vendors charge separately for: <strong style="color:#fff;">AV support, asset management, research &amp; automation, content strategy, and distribution.</strong></p>
         <p>Every project builds on the last. The archive grows, the audience compounds, the systems get smarter. Everything built with efficiency and sustainability as the goal — not a monthly expense, but infrastructure that appreciates.</p>
-        <p>If a new idea lands, we scope it together and adjust priorities within the retainer.</p>
+        <p><strong style="color:#fff;">If a new idea lands, we scope it together and adjust priorities within the retainer.</strong></p>
       </div>
     </div>
   </div>
@@ -1362,57 +1368,38 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════ -->
-<!-- SLIDE 5: YOUR IDEAS — Edith Chen / Telepathy Tapes / UFO Doc -->
+<!-- SLIDE 5: YOUR IDEAS — Edith Ubuntu Chan / Telepathy Tapes / UFO Doc -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="slide" id="s-flagship">
   <div style="position:absolute;top:16px;left:48px;z-index:20;display:flex;flex-direction:column;gap:2px;">
-    <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What the retainer unlocks.</div>
-    <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">Your ideas. Our execution.</div>
+    <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What we could do.</div>
+    <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">Your ideas. In production.</div>
   </div>
-  <!-- Edith Chen video background (Panel 1 only) -->
+  <!-- Edith Ubuntu Chan video background (Panel 1 only) -->
   <div id="flagshipVideoBg" style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;z-index:0;">
     <iframe id="flagshipIframe" data-src="https://www.youtube.com/embed/XETpXLhFp3I?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=XETpXLhFp3I&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" allow="autoplay; encrypted-media" style="width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;border:none;"></iframe>
     <div style="position:absolute;inset:0;background:rgba(10,10,10,0.72);z-index:1;"></div>
   </div>
-  <!-- Panel 2 bg: Viral video proof grid -->
-  <div id="flagshipViralBg" style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;z-index:0;background:#0a0a0a;display:none;">
-    <div style="position:absolute;right:0;top:0;bottom:0;width:55%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:3px;padding:3px;opacity:0.55;">
-      <div style="overflow:hidden;position:relative;"><img src="logos/viral-10m.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">10M views</div></div>
-      <div style="overflow:hidden;position:relative;"><img src="logos/viral-1m.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">1.1M views</div></div>
-      <div style="overflow:hidden;position:relative;"><img src="logos/viral-271k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">271K views</div></div>
-      <div style="overflow:hidden;position:relative;"><img src="logos/viral-104k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">104K views</div></div>
-      <div style="overflow:hidden;position:relative;"><img src="logos/viral-99k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">99K views</div></div>
-      <div style="overflow:hidden;position:relative;"><img src="logos/viral-90k.jpg" style="width:100%;height:100%;object-fit:cover;" /><div style="position:absolute;bottom:6px;left:8px;font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.9);">90K views</div></div>
-    </div>
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.92) 35%, rgba(10,10,10,0.5) 65%, rgba(10,10,10,0.25) 100%);z-index:1;"></div>
-  </div>
-  <!-- Panel 3 bg: UFO newspaper research -->
-  <div id="flagshipUfoBg" style="position:absolute;top:80px;left:80px;right:80px;bottom:80px;border-radius:16px;overflow:hidden;z-index:0;background:#0a0a0a;display:none;">
-    <div style="position:absolute;right:40px;top:50%;transform:translateY(-50%);width:42%;opacity:0.5;">
-      <img src="logos/ufo-newspaper.png" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1);" />
-      <div style="margin-top:8px;font-size:10px;color:rgba(255,255,255,0.3);text-align:center;letter-spacing:0.5px;">newspapers.com archive — Point Reyes, CA</div>
-    </div>
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.9) 40%, rgba(10,10,10,0.45) 70%, rgba(10,10,10,0.2) 100%);z-index:1;"></div>
-  </div>
+  <!-- Panels 2 & 3 removed — single-slide flagship -->
   <div class="slide-inner" data-ct-slide="flagship">
     <div class="ct-top">
-      <div class="ct-label">Your Ideas. In Production.</div>
-      <div class="ct-counter" data-ct-counter="flagship"></div>
+      <div class="ct-counter" data-ct-counter="flagship" style="display:none;"></div>
     </div>
     <div class="ct-center">
       <div class="ct-title" data-ct-title="flagship"></div>
       <div class="ct-body" data-ct-body="flagship"></div>
-      <div class="ct-quote" data-ct-quote="flagship"></div>
+      <div class="ct-quote" data-ct-quote="flagship" style="display:none;"></div>
     </div>
     <div class="ct-bottom">
-      <div class="dot-nav" data-ct-nav="flagship">
+      <div class="dot-nav" data-ct-nav="flagship" style="display:none;">
         <div class="dot-track"><div class="dot-track-fill" data-ct-fill="flagship"></div></div>
       </div>
     </div>
   </div>
-  <button class="ct-side-arrow ct-left" data-ct-prev="flagship">&#8592;</button>
-  <button class="ct-side-arrow ct-right" data-ct-next="flagship">&#8594;</button>
-  <button class="slide-next" data-next style="opacity:0;pointer-events:none;" data-ct-done="flagship">↓</button>
+  <!-- Side arrows hidden for single-panel flagship -->
+  <button class="ct-side-arrow ct-left" data-ct-prev="flagship" style="display:none;">&#8592;</button>
+  <button class="ct-side-arrow ct-right" data-ct-next="flagship" style="display:none;">&#8594;</button>
+  <button class="slide-next" data-next data-ct-done="flagship">↓</button>
 </section>
 
 
@@ -1474,9 +1461,7 @@ const CT_DATA = {
     { title: '', body: '', quote: '' },
   ],
   flagship: [
-    { title: 'Season 1: Dr. Edith Chen', body: 'You already have your first season.\n\nDr. Edith Chen — parapsychologist, consciousness researcher, one of the most compelling interviews in the field. We have video. She\'s ready to be the through-line for a serialized investigation that puts PRRIC on the map.\n\nDave hosts. Real field reporting. Real research. Not a talk show — an investigation with a subject worthy of a national audience.', quote: '"I keep talking about things that are exciting to me. I\'m really into doing like real research." — Chris' },
-    { title: 'We Reverse-Engineered Telepathy Tapes', body: 'We didn\'t just listen to Telepathy Tapes — we took it apart.\n\nEpisode structure. Guest booking strategy. Clip mechanics. Distribution pipeline. Release cadence. How they turned one interview into 30+ pieces of content across platforms.\n\nWe\'ve already proven we can make content travel — 10M, 1.1M, 271K views across different accounts and formats. Dr. Diane Hennacy Powell hit 271K views with no podcast, no system, no distribution plan.\n\nImagine those numbers inside a real engine. Your podcast launches with their playbook from day one.', quote: '"Audacious Goal: Podcast Bigger than Telepathy Tapes" — Chris' },
-    { title: 'The UFO Documentary', body: 'You pitched the idea. We already started the research.\n\nThat\'s a real newspapers.com clipping behind this text — "UFO Sightings Confirmed," Point Reyes, archived and indexed. We\'ve pulled every recorded sighting going back to the 1960s. Jeremy\'s experience. Heather\'s sighting. Real lore, real history, real witnesses.\n\nThe retainer turns this from a back-of-mind idea into a production plan with a timeline, a distribution strategy, and a premiere date.\n\nOne flagship film that puts Point Reyes on the map.', quote: '"What if we actually made this like an alien destination? Turn into a UFO town." — Chris' },
+    { title: 'Beat The Telepathy Tapes.', body: 'At our last meeting, you had two big ideas. A <strong>documentary about UFOs in Point Reyes</strong>, and <strong>PRRIC\'s Podcast on scale with The Telepathy Tapes</strong>. Projects like these would require a significant shift in retainer scope — and that\'s exactly what the model is designed for.\n\nWe could shift to a <strong>seasonal model for the PRRIC Podcast</strong> — a highly produced, investigative series built around a single subject. Audio-first, with a companion documentary and a full digital ecosystem around it.\n\nOur idea?\n\n<span style="font-size:clamp(18px,2.8vw,32px);font-weight:700;letter-spacing:-0.5px;display:block;margin:8px 0;white-space:nowrap;">Season 1: PRRIC Investigates Dr. Edith Ubuntu Chan</span>\n\n...and we\'ve already reverse engineered Telepathy Tapes\' exact production pipeline.', quote: '' },
   ],
 }
 
@@ -1697,16 +1682,10 @@ function goToCT(name, i) {
       }
     }
   }
-  // Flagship: swap backgrounds per panel
+  // Flagship: single panel — video bg always visible
   if (name === 'flagship') {
     const videoBg = document.getElementById('flagshipVideoBg')
-    const viralBg = document.getElementById('flagshipViralBg')
-    const ufoBg = document.getElementById('flagshipUfoBg')
-    if (videoBg && viralBg && ufoBg) {
-      videoBg.style.display = (i === 0) ? '' : 'none'
-      viralBg.style.display = (i === 1) ? '' : 'none'
-      ufoBg.style.display = (i === 2) ? '' : 'none'
-    }
+    if (videoBg) videoBg.style.display = ''
   }
   // Update hint text on Flynn
   if (name === 'flynn') {
@@ -1789,7 +1768,7 @@ const flynnLazy = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 })
 flynnLazy.observe(document.getElementById('s-flynn'))
 
-// ─── Lazy-load Flagship (Edith Chen) video when slide comes into view ───
+// ─── Lazy-load Flagship (Edith Ubuntu Chan) video when slide comes into view ───
 const flagshipIframe = document.getElementById('flagshipIframe')
 if (flagshipIframe) {
   const flagshipLazy = new IntersectionObserver((entries) => {
