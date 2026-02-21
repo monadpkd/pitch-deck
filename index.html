@@ -1050,12 +1050,33 @@
       font-size: 20px !important;
     }
 
-    /* ─── 7. Gaps panel — text full-width, hide images ─── */
+    /* ─── 7. Gaps panel — text full-width, images stacked below ─── */
+    #flynnGaps .timeline-wrap {
+      overflow-y: auto !important;
+    }
     #flynnGaps .timeline-wrap > div:nth-child(2) {
       width: 100% !important;
     }
     #gapImgColumn {
-      display: none !important;
+      position: relative !important;
+      top: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: 100% !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      margin-top: 20px !important;
+      gap: 12px !important;
+    }
+    #gapImgColumn .gap-img-node {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+    #gapImgColumn img {
+      height: auto !important;
+      width: 80% !important;
+      max-width: 280px !important;
+      max-height: none !important;
     }
     #gapLines {
       display: none !important;
@@ -1180,8 +1201,12 @@
     }
 
     /* ─── 14. Section headers left:48 → 16px ─── */
-    #s-flynn > div:first-child {
+    #s-flynn > .section-header {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
     }
     #s-engine > div:first-child,
     #s-number > div:first-child,
@@ -1340,7 +1365,7 @@
 <!-- SLIDE 2: FLYNN — Case Study (click-through w/ arrows)  -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="slide" id="s-flynn">
-  <div style="position:absolute;top:16px;left:48px;z-index:20;display:flex;flex-direction:column;gap:2px;">
+  <div class="section-header" style="position:absolute;top:16px;left:48px;z-index:20;display:flex;flex-direction:column;gap:2px;">
     <div style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.2;">What you've already funded.</div>
     <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(232,232,232,0.5);">The Hourly Model</div>
   </div>
