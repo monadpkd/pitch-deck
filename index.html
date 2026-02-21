@@ -1180,14 +1180,15 @@
     }
 
     /* ─── 14. Section headers left:48 → 16px ─── */
-    #s-flynn > div:first-child,
+    #s-flynn > div:first-child {
+      display: none !important;
+    }
     #s-engine > div:first-child,
     #s-number > div:first-child,
     #s-flagship > div:first-child {
       left: 16px !important;
       right: 16px !important;
     }
-    #s-flynn > div:first-child > div:first-child,
     #s-engine > div:first-child > div:first-child,
     #s-number > div:first-child > div:first-child,
     #s-flagship > div:first-child > div:first-child {
