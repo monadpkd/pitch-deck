@@ -964,6 +964,329 @@
     width: 8px; height: 8px;
   }
 
+  /* ═══════════════════════════════════════════════════════ */
+  /* MOBILE RESPONSIVE — screens ≤ 768px                    */
+  /* ═══════════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+
+    /* ─── 1. Slide padding ─── */
+    .slide-inner {
+      padding: 20px !important;
+    }
+    .video-hero-content {
+      padding: 20px;
+    }
+
+    /* ─── 2. Hero logos ─── */
+    #s-hero .video-hero-content > div:first-child {
+      gap: 12px !important;
+      margin-bottom: 16px !important;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #s-hero .video-hero-content > div:first-child img {
+      width: clamp(55px, 18vw, 90px) !important;
+      height: auto !important;
+    }
+    #s-hero .video-hero-content > div:first-child img:nth-child(2) {
+      height: clamp(45px, 12vw, 70px) !important;
+      width: auto !important;
+    }
+
+    /* ─── 3. 80px insets → 12px ─── */
+    .flynn-video-box,
+    .timeline-overlay {
+      top: 12px !important;
+      left: 12px !important;
+      right: 12px !important;
+      bottom: 12px !important;
+      border-radius: 10px !important;
+    }
+    #flagshipVideoBg {
+      top: 12px !important;
+      left: 12px !important;
+      right: 12px !important;
+      bottom: 12px !important;
+      border-radius: 10px !important;
+    }
+    #s-engine > div:nth-child(2) {
+      top: 12px !important;
+      left: 12px !important;
+      right: 12px !important;
+      bottom: 12px !important;
+      border-radius: 10px !important;
+    }
+
+    /* ─── 4. Flynn slide-inner full-width ─── */
+    [data-ct-slide="flynn"] {
+      top: 12px !important;
+      left: 12px !important;
+      right: 12px !important;
+      bottom: 12px !important;
+      width: auto !important;
+      max-width: none !important;
+      padding: 16px !important;
+    }
+
+    /* ─── 5. Timeline padding ─── */
+    .timeline-wrap {
+      padding: 16px !important;
+    }
+
+    /* ─── 6. Timeline 2-col → stacked ─── */
+    .timeline-content {
+      flex-direction: column !important;
+      gap: 20px !important;
+      overflow-y: auto !important;
+    }
+    .timeline-summary {
+      flex: none !important;
+      padding-right: 0 !important;
+    }
+    .timeline-summary p {
+      font-size: 18px !important;
+    }
+    .timeline-header {
+      font-size: 20px !important;
+    }
+
+    /* ─── 7. Gaps panel — text full-width, hide images ─── */
+    #flynnGaps .timeline-wrap > div:nth-child(2) {
+      width: 100% !important;
+    }
+    #gapImgColumn {
+      display: none !important;
+    }
+    #gapLines {
+      display: none !important;
+    }
+    #gapsHeader {
+      font-size: 22px !important;
+    }
+
+    /* ─── 8. Opportunity cost grid 3-col → 2-col ─── */
+    #flynnOpCost .timeline-wrap > div:nth-child(3) {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    #opCostHeader {
+      font-size: 22px !important;
+    }
+    #opCostSub {
+      font-size: 14px !important;
+      margin-bottom: 20px !important;
+    }
+    #opCostCTA {
+      font-size: 22px !important;
+      margin-top: 20px !important;
+    }
+
+    /* ─── 9. Hub section — stack vertically ─── */
+    #s-engine div[style*="padding:60px 80px"] {
+      padding: 16px !important;
+      flex-direction: column !important;
+      overflow-y: auto !important;
+    }
+    #s-engine div[style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+    #s-engine div[style*="flex:0 0 35%"] {
+      flex: none !important;
+      padding-left: 0 !important;
+      padding-top: 20px !important;
+    }
+    #hubTitle {
+      font-size: clamp(1.4rem, 5vw, 2rem) !important;
+    }
+    .hub-item > div:first-child {
+      font-size: 18px !important;
+    }
+    .hub-item > div:last-child {
+      font-size: 14px !important;
+    }
+    #teamPhotoBox {
+      max-width: 200px !important;
+      aspect-ratio: 1 !important;
+    }
+
+    /* ─── 10. Numbers table — hide vendor col, shrink ─── */
+    .numbers-val.vendor,
+    .numbers-total-val.vendor {
+      display: none !important;
+    }
+    .numbers-col-label:last-child {
+      display: none !important;
+    }
+    .numbers-cols {
+      gap: 0 !important;
+    }
+    .numbers-freq {
+      width: 55px !important;
+      font-size: 11px !important;
+    }
+    .numbers-val {
+      width: 60px !important;
+      font-size: 13px !important;
+    }
+    .numbers-total-val {
+      width: 60px !important;
+    }
+    .numbers-item {
+      font-size: 13px !important;
+    }
+    .numbers-vals {
+      gap: 0 !important;
+    }
+    .numbers-total-vals {
+      gap: 0 !important;
+    }
+    .numbers-section-label {
+      font-size: 10px !important;
+    }
+
+    /* ─── 11. CTA — remove nowrap, scale ─── */
+    #s-cta .stat-big {
+      white-space: normal !important;
+      font-size: clamp(1.2rem, 5vw, 2rem) !important;
+    }
+
+    /* ─── 12. CTA logos smaller ─── */
+    #s-cta .logos {
+      gap: 16px !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      margin-top: 20px !important;
+    }
+    #s-cta .logos img {
+      height: 60px !important;
+    }
+    #s-cta .logos .logo-divider {
+      height: 40px !important;
+    }
+
+    /* ─── 13. CT arrows smaller ─── */
+    .ct-side-arrow.ct-right {
+      width: 48px !important;
+      height: 48px !important;
+      font-size: 22px !important;
+      right: 12px !important;
+    }
+    .ct-side-arrow.ct-left {
+      left: 12px !important;
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 16px !important;
+    }
+
+    /* ─── 14. Section headers left:48 → 16px ─── */
+    #s-flynn > div:first-child,
+    #s-engine > div:first-child,
+    #s-number > div:first-child,
+    #s-flagship > div:first-child {
+      left: 16px !important;
+      right: 16px !important;
+    }
+    #s-flynn > div:first-child > div:first-child,
+    #s-engine > div:first-child > div:first-child,
+    #s-number > div:first-child > div:first-child,
+    #s-flagship > div:first-child > div:first-child {
+      font-size: clamp(1.1rem, 4.5vw, 1.6rem) !important;
+    }
+
+    /* ─── 15. Flynn side arrows ─── */
+    .flynn-side-left {
+      left: 8px !important;
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 16px !important;
+    }
+    .flynn-side-right {
+      right: 8px !important;
+      width: 42px !important;
+      height: 42px !important;
+      font-size: 18px !important;
+    }
+    .flynn-timeline-bar {
+      left: 16px !important;
+      right: 16px !important;
+      bottom: 16px !important;
+    }
+
+    /* ─── 16. Hide global nav dots ─── */
+    .global-nav {
+      display: none !important;
+    }
+
+    /* ─── Bonus: Shoot list rows ─── */
+    .shoot-row {
+      flex-wrap: wrap !important;
+      gap: 4px 12px !important;
+    }
+    .shoot-row-date {
+      width: auto !important;
+      flex-basis: 100% !important;
+    }
+    .shoot-row-desc {
+      flex-basis: 100% !important;
+    }
+
+    /* ─── Bonus: Flywheel diagram ─── */
+    .flywheel-diagram {
+      gap: 12px !important;
+    }
+    .fw-node {
+      padding: 10px 16px !important;
+      font-size: 12px !important;
+    }
+
+    /* ─── Bonus: Flynn counter & hint ─── */
+    #flynnCounter {
+      right: 16px !important;
+      top: 16px !important;
+      font-size: 11px !important;
+    }
+    #flynnHint {
+      right: 16px !important;
+      bottom: 16px !important;
+      font-size: 11px !important;
+    }
+
+    /* ─── Bonus: Slide-next button ─── */
+    .slide-next {
+      bottom: 20px !important;
+      right: 16px !important;
+      width: 40px !important;
+      height: 40px !important;
+      font-size: 16px !important;
+    }
+
+    /* ─── Bonus: Dot nav labels ─── */
+    .dot-label {
+      font-size: 8px !important;
+    }
+
+    /* ─── Bonus: Flagship body text ─── */
+    #s-flagship .ct-body {
+      max-width: 100% !important;
+      font-size: 15px !important;
+    }
+
+    /* ─── Bonus: CTA sub text ─── */
+    #s-cta .stat-sub {
+      font-size: 15px !important;
+    }
+    #s-cta .stat-sub span {
+      font-size: 18px !important;
+    }
+
+    /* ─── Bonus: Scroll snap softer on mobile ─── */
+    html {
+      scroll-snap-type: y proximity;
+    }
+
+  }
+
 </style>
 </head>
 <body>
