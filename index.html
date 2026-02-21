@@ -1053,13 +1053,17 @@
     /* ─── 7. Gaps panel — text full-width, images stacked below ─── */
     #flynnGaps .timeline-wrap {
       overflow-y: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
     }
     #flynnGaps .timeline-wrap > div:nth-child(2) {
       width: 100% !important;
+      position: relative !important;
     }
     #gapImgColumn {
       position: relative !important;
       top: auto !important;
+      left: auto !important;
       right: auto !important;
       bottom: auto !important;
       width: 100% !important;
@@ -1069,13 +1073,15 @@
       gap: 12px !important;
     }
     #gapImgColumn .gap-img-node {
+      opacity: 1 !important;
+      transform: none !important;
       flex-direction: column !important;
       align-items: center !important;
     }
     #gapImgColumn img {
       height: auto !important;
-      width: 80% !important;
-      max-width: 280px !important;
+      width: 85% !important;
+      max-width: 300px !important;
       max-height: none !important;
     }
     #gapLines {
