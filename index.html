@@ -1206,26 +1206,17 @@
       font-size: 16px !important;
     }
 
-    /* ─── 14. Section headers left:48 → 16px ─── */
-    #s-flynn > .section-header {
+    /* ─── 14. Section headers — hide on mobile ─── */
+    #s-flynn > .section-header,
+    #s-engine > div:first-child,
+    #s-number > div:first-child,
+    #s-flagship > div:first-child {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
       height: 0 !important;
       overflow: hidden !important;
     }
-    #s-engine > div:first-child,
-    #s-number > div:first-child,
-    #s-flagship > div:first-child {
-      left: 16px !important;
-      right: 16px !important;
-    }
-    #s-engine > div:first-child > div:first-child,
-    #s-number > div:first-child > div:first-child,
-    #s-flagship > div:first-child > div:first-child {
-      font-size: clamp(1.1rem, 4.5vw, 1.6rem) !important;
-    }
-
     /* ─── 15. Flynn side arrows ─── */
     .flynn-side-left {
       left: 8px !important;
@@ -1314,6 +1305,10 @@
     #s-flagship .ct-body {
       max-width: 100% !important;
       font-size: 15px !important;
+    }
+    #s-flagship .ct-body span {
+      white-space: normal !important;
+      font-size: clamp(16px, 4vw, 24px) !important;
     }
 
     /* ─── Bonus: CTA sub text ─── */
