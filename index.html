@@ -978,21 +978,24 @@
     }
 
     /* ─── 2. Hero logos ─── */
-    #s-hero .video-hero-content > div:first-child {
-      gap: 8px !important;
+    .video-hero-content > div[style] {
+      gap: 10px !important;
       margin-bottom: 16px !important;
       flex-wrap: nowrap !important;
-      justify-content: center;
+      justify-content: center !important;
       align-items: center !important;
     }
-    #s-hero .video-hero-content > div:first-child img {
-      width: clamp(50px, 15vw, 80px) !important;
+    .video-hero-content > div[style] > img {
+      width: 28vw !important;
+      max-width: 90px !important;
       height: auto !important;
-      max-height: 70px !important;
+      max-height: 65px !important;
+      object-fit: contain !important;
     }
-    #s-hero .video-hero-content > div:first-child img:nth-child(2) {
-      height: clamp(40px, 10vw, 60px) !important;
+    .video-hero-content > div[style] > img:nth-child(2) {
       width: auto !important;
+      height: 12vw !important;
+      max-height: 55px !important;
     }
 
     /* ─── 3. 80px insets → 12px ─── */
