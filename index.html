@@ -978,24 +978,27 @@
     }
 
     /* ─── 2. Hero logos ─── */
-    .video-hero-content > div[style] {
+    #s-hero .video-hero-content > div {
       gap: 10px !important;
       margin-bottom: 16px !important;
       flex-wrap: nowrap !important;
       justify-content: center !important;
       align-items: center !important;
     }
-    .video-hero-content > div[style] > img {
-      width: 28vw !important;
-      max-width: 90px !important;
+    #s-hero .video-hero-content img[alt="GLF"] {
+      width: 70px !important;
       height: auto !important;
-      max-height: 65px !important;
-      object-fit: contain !important;
+      max-height: 60px !important;
     }
-    .video-hero-content > div[style] > img:nth-child(2) {
+    #s-hero .video-hero-content img[alt="Sound Legacy"] {
       width: auto !important;
-      height: 12vw !important;
-      max-height: 55px !important;
+      height: 50px !important;
+      max-width: 140px !important;
+    }
+    #s-hero .video-hero-content img[alt="PRRIC"] {
+      width: 70px !important;
+      height: auto !important;
+      max-height: 60px !important;
     }
 
     /* ─── 3. 80px insets → 12px ─── */
