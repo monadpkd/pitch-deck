@@ -979,17 +979,19 @@
 
     /* ─── 2. Hero logos ─── */
     #s-hero .video-hero-content > div:first-child {
-      gap: 12px !important;
+      gap: 8px !important;
       margin-bottom: 16px !important;
-      flex-wrap: wrap;
+      flex-wrap: nowrap !important;
       justify-content: center;
+      align-items: center !important;
     }
     #s-hero .video-hero-content > div:first-child img {
-      width: clamp(55px, 18vw, 90px) !important;
+      width: clamp(50px, 15vw, 80px) !important;
       height: auto !important;
+      max-height: 70px !important;
     }
     #s-hero .video-hero-content > div:first-child img:nth-child(2) {
-      height: clamp(45px, 12vw, 70px) !important;
+      height: clamp(40px, 10vw, 60px) !important;
       width: auto !important;
     }
 
@@ -1241,6 +1243,10 @@
     }
 
     /* ─── Bonus: Flynn counter & hint ─── */
+    /* Hide duplicate ct-counter inside Flynn slide-inner (standalone #flynnCounter stays) */
+    [data-ct-counter="flynn"] {
+      display: none !important;
+    }
     #flynnCounter {
       right: 16px !important;
       top: 16px !important;
@@ -1250,6 +1256,14 @@
       right: 16px !important;
       bottom: 16px !important;
       font-size: 11px !important;
+    }
+
+    /* ─── Flynn slide-inner scrollable on mobile ─── */
+    [data-ct-slide="flynn"] {
+      overflow-y: auto !important;
+    }
+    [data-ct-slide="flynn"] .ct-center {
+      padding-bottom: 60px !important;
     }
 
     /* ─── Bonus: Slide-next button ─── */
@@ -2124,12 +2138,14 @@ if (flynnSection) {
     // Block scroll in all other cases — user must use arrows
     e.preventDefault()
   }, { passive: false })
-  // Touch: block swipe unless at boundary or entered from below
+  // Touch: block swipe unless at boundary, entered from below, or on mobile
   let flynnTouchStartY = 0
   flynnSection.addEventListener('touchstart', function(e) {
     flynnTouchStartY = e.touches[0].clientY
   }, { passive: true })
   flynnSection.addEventListener('touchmove', function(e) {
+    // On mobile (≤768px), don't trap scroll — let user scroll freely and use arrows
+    if (window.innerWidth <= 768) return
     if (flynnEnteredFromBelow) return
     const items = CT_DATA.flynn
     const onFirstPanel = ctState.flynn === 0
